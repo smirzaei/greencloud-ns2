@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>GreenCloud Simulator Dashboard</title>
+        <script language="javascript" type="text/javascript" src="./flot/jquery.js"></script>
+        <script language="javascript" type="text/javascript" src="./flot/jquery.flot.js"></script>
+        <script language="javascript" type="text/javascript" src="./flot/jquery.flot.pie.js"></script>
+        <script language="javascript" type="text/javascript" src="./flot-axislabels/jquery.flot.axislabels.js"></script>
+        <script src="jquery/js/jquery-ui-1.9.0.custom.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="jquery/css/smoothness/jquery-ui-1.9.0.custom.css"/>
+
+        <script src="dashboard.js"></script>
+        <script src="../../traces/data.js"></script>
+        <script src="graph-definitions.js"></script>
+        <link rel="stylesheet" type="text/css" href="dashboard.css">
+    </head>
+    <body>
+        <div id="top">
+            <div class="title">
+                <div class="titleInner contentWidth">
+                    <div class="titleLogo">
+                        <img src='images/logo.png'>
+                    </div>
+                    <div class="titleHeading">
+                        <h1>Simulation Results</h1>
+                    </div>
+                </div>
+            </div>
+            <div id='tabs' class="pageContent contentWidth">
+                <ul></ul>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(document).ready(init());
+    </script>
+</html>

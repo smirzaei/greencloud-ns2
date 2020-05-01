@@ -1,0 +1,11 @@
+<map id="DcScheduler" name="DcScheduler">
+<area shape="rect" id="node2" href="$classGreenScheduler.html" title="GreenScheduler" alt="" coords="5,80,120,107"/>
+<area shape="rect" id="node3" href="$classRoundRobinsScheduler.html" title="RoundRobinsScheduler" alt="" coords="144,80,301,107"/>
+<area shape="rect" id="node4" href="$classScoreScheduler.html" title="ScoreScheduler" alt="" coords="325,80,440,107"/>
+<area shape="rect" id="node5" href="$classBestScoreScheduler.html" title="BestScoreScheduler" alt="" coords="227,155,368,181"/>
+<area shape="rect" id="node8" href="$classProbabilisticScheduler.html" title="ProbabilisticScheduler" alt="" coords="393,155,543,181"/>
+<area shape="rect" id="node6" href="$classBestDENS.html" title="BestDENS" alt="" coords="143,229,228,256"/>
+<area shape="rect" id="node7" href="$classHerosScheduler.html" title="HerosScheduler" alt="" coords="252,229,367,256"/>
+<area shape="rect" id="node9" href="$classRandDENS.html" title="RandDENS" alt="" coords="413,229,501,256"/>
+<area shape="rect" id="node10" href="$classRandomScheduler.html" title="RandomScheduler" alt="" coords="525,229,653,256"/>
+</map>

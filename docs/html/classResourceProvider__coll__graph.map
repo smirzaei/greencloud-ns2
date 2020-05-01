@@ -1,0 +1,8 @@
+<map id="ResourceProvider" name="ResourceProvider">
+<area shape="rect" id="node9" href="$classTskComSink.html" title="TskComSink" alt="" coords="60,377,156,404"/>
+<area shape="rect" id="node3" href="$classTskComAgent.html" title="TskComAgent" alt="" coords="110,199,214,225"/>
+<area shape="rect" id="node5" href="$classProviderOutAgent.html" title="ProviderOutAgent" alt="" coords="238,199,361,225"/>
+<area shape="rect" id="node7" href="$classPoaBufList.html" title="PoaBufList" alt="" coords="185,109,270,136"/>
+<area shape="rect" id="node8" href="$classPoaBuf.html" title="PoaBuf" alt="" coords="196,5,260,32"/>
+<area shape="rect" id="node10" href="$classByteCounter.html" title="ByteCounter" alt="" coords="244,288,339,315"/>
+</map>

@@ -1,0 +1,19 @@
+# NS2 Programming Guide
+
+## Creation of new class
+1. Add source (*.cc) and header  (*.h) files to greencloud/Makefile to NS2_SOURCE_FILES variable.
+2. Add object (*.o) files to greencloud/build/ns-2.35/Makefile.in OBJ_CC variable.
+3. Run greencloud/build/ns-2.35/configure to prepare Makefile. ( Do it from the directory: greencloud/build/ns-2.35/ )
+
+## Exchanging information between tcl and C++
+
+The experimentation configuration and control is done in Tcl part. The experimentation execution is done in C++ part. The communication can be done in three main ways:
+
+1. Binding values: the values of int or double are mapped continuously between C++ and Tcl parts. Bidirectional. It works only for numerical variables and creates overhead. See function bind.
+2. Command: Enables to call functions of C++ from Tcl script. Unidirectional, requires adaptation of command function. The values are passed as a list of character strings.
+3. tcl.eval: Enables to evaluate expression and send its result as a string to Tcl part.
+
+
+Detailed instructions:
+1. Binding: Modify ./build/ns-2.35/tcl/lib/ns-default.tcl :  set binded variables default values.
+2. For examples see implementation of command funcitons in classes derived form TclObject, e.g.: DataCenter, ResourceProvider (usage from tcl: greencloud/src/scripts/dc.tcl).

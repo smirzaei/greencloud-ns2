@@ -1,0 +1,23 @@
+<map id="TaskAlloc" name="TaskAlloc">
+<area shape="rect" id="node2" href="$classCoreScheduler.html" title="CoreScheduler" alt="" coords="1018,392,1125,419"/>
+<area shape="rect" id="node3" href="$classResourceProvider.html" title="ResourceProvider" alt="" coords="661,288,783,315"/>
+<area shape="rect" id="node11" href="$classTskComSink.html" title="TskComSink" alt="" coords="826,392,922,419"/>
+<area shape="rect" id="node19" href="$classDcHost.html" title="DcHost" alt="" coords="121,481,187,508"/>
+<area shape="rect" id="node24" href="$classVmMigration.html" title="VmMigration" alt="" coords="505,481,600,508"/>
+<area shape="rect" id="node27" href="$classVM.html" title="VM" alt="" coords="477,392,519,419"/>
+<area shape="rect" id="node28" href="$classTaskInfo.html" title="TaskInfo" alt="" coords="732,839,803,865"/>
+<area shape="rect" id="node5" href="$classTskComAgent.html" title="TskComAgent" alt="" coords="571,199,675,225"/>
+<area shape="rect" id="node7" href="$classProviderOutAgent.html" title="ProviderOutAgent" alt="" coords="790,199,913,225"/>
+<area shape="rect" id="node9" href="$classPoaBufList.html" title="PoaBufList" alt="" coords="786,109,871,136"/>
+<area shape="rect" id="node10" href="$classPoaBuf.html" title="PoaBuf" alt="" coords="797,5,861,32"/>
+<area shape="rect" id="node12" href="$classByteCounter.html" title="ByteCounter" alt="" coords="997,288,1092,315"/>
+<area shape="rect" id="node25" href="$classVmMigrationSink.html" title="VmMigrationSink" alt="" coords="676,571,797,597"/>
+<area shape="rect" id="node13" href="$classCapacity.html" title="Capacity" alt="" coords="1116,288,1189,315"/>
+<area shape="rect" id="node14" href="$classCloudTask.html" title="CloudTask" alt="" coords="658,749,741,776"/>
+<area shape="rect" id="node15" href="$classResourceConsumer.html" title="ResourceConsumer" alt="" coords="430,288,566,315"/>
+<area shape="rect" id="node16" href="$classCloudUser.html" title="CloudUser" alt="" coords="353,660,435,687"/>
+<area shape="rect" id="node17" href="$classDataCenter.html" title="DataCenter" alt="" coords="244,571,331,597"/>
+<area shape="rect" id="node20" href="$classDcRack.html" title="DcRack" alt="" coords="24,392,92,419"/>
+<area shape="rect" id="node22" href="$classPowerModel.html" title="PowerModel" alt="" coords="117,392,210,419"/>
+<area shape="rect" id="node23" href="$classDcScheduler.html" title="DcScheduler" alt="" coords="281,481,377,508"/>
+</map>

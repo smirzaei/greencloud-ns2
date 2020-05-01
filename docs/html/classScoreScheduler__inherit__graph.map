@@ -1,0 +1,9 @@
+<map id="ScoreScheduler" name="ScoreScheduler">
+<area shape="rect" id="node3" href="$classBestScoreScheduler.html" title="BestScoreScheduler" alt="" coords="89,155,231,181"/>
+<area shape="rect" id="node6" href="$classProbabilisticScheduler.html" title="ProbabilisticScheduler" alt="" coords="255,155,406,181"/>
+<area shape="rect" id="node2" href="$classDcScheduler.html" title="DcScheduler" alt="" coords="197,5,293,32"/>
+<area shape="rect" id="node4" href="$classBestDENS.html" title="BestDENS" alt="" coords="5,229,91,256"/>
+<area shape="rect" id="node5" href="$classHerosScheduler.html" title="HerosScheduler" alt="" coords="115,229,229,256"/>
+<area shape="rect" id="node7" href="$classRandDENS.html" title="RandDENS" alt="" coords="264,229,352,256"/>
+<area shape="rect" id="node8" href="$classRandomScheduler.html" title="RandomScheduler" alt="" coords="376,229,504,256"/>
+</map>

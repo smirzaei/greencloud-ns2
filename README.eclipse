@@ -1,0 +1,64 @@
+Eclipse Project Setup
+
+The GreenCloud VM comes with Eclipse pre-configured.
+- To debug through a simulation, use the debug (bug icon) drop-down menu and select "ns".   
+- To change which simulation is run, edit the file "src/scripts/main.tcl" at the line:
+    set sim(dc_type) "three-tier debug"
+    This can be "three-tier", "three-tier high-speed" or "three-tier debug"
+- To change the load factor, edit the command-line parameters in the debug config:
+    under the debug (bug icon) drop-down menu, select "debug configurations..."
+    in the arguments tab, change the second argument (must be in the range [0,1])
+
+
+## To rebuild the Eclipse environment ##
+NOTE: These instructions are for building a new Eclipse config from scratch. It is usually easier to use the Eclipse metadata which is present in the source code, or by using the pre-configured VM, both of which are available at http://greencloud.gforge.uni.lu/.
+
+It's best to use the pre-built C++ eclipse release, rather than the one available from the Ubuntu repositories via "apt-get install ..."
+
+The following commands can be copied & pasted into a command prompt
+NOTE: for 64-bit linux, replace "gtk" with "gtk-x86_64" in the download URL.
+
+sudo apt-get -y install openjdk-6-jre
+wget http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/juno/R/eclipse-cpp-juno-linux-gtk.tar.gz
+tar -zxvf eclipse*.tar.gz
+sudo mv eclipse /usr/local/lib/
+sudo ln -s /usr/local/lib/eclipse/eclipse /usr/local/bin/
+mkdir -p ~/.local/share/applications
+echo "[Desktop Entry]
+Type=Application
+Name=Eclipse
+Comment=Eclipse Integrated Development Environment
+Icon=/usr/local/lib/eclipse/icon.xpm
+Exec=/usr/local/lib/eclipse/eclipse
+Terminal=false
+Categories=Development;IDE;Java;" > ~/.local/share/applications/eclipse.desktop
+
+
+# Now run 'eclipse'. The instructions below should be followed from within Eclipse.
+
+Help > Install New Software > Add
+    Name: TCL
+    Lcoation: http://download.eclipse.org/technology/dltk/updates
+
+Expand "DLTK 2.0" (if using Eclipse Juno) or "DLTK 0.95.1" (if using Eclipse Indigo) and select "TCL Development Tools".
+Next > I Accept > Finish
+
+
+File > New > C++ project
+    Un-check "default location"
+    Browse and select the GreenCloud directory
+    Click Finish
+
+
+Expand the Binaries item, inside the GreenCloud project folder.
+Right click on the 'ns' executable > Debug As > Local C/C++ Application
+    select gdb/mi Debugger and hit OK. 
+    This parameter-less execution will show an interactive shell prompt. Exit out of it to complete the configuration below.
+
+under 'Debug Configurations' > select the ns debug configuration
+    arguments tab
+        program arguments: main.tcl 0.3
+        Working Directory: ${workspace_loc:GreenCloud}/src/scripts
+    environment tab
+        add variable LD_LIBRARY_PATH, and set the value to whatever is set in your build/environment.sh file
+

@@ -1,0 +1,12 @@
+<map id="cpu.cc" name="cpu.cc">
+<area shape="rect" id="node2" href="$cpu_8h.html" title="cpu.h" alt="" coords="838,80,893,107"/>
+<area shape="rect" id="node3" href="$corescheduler_8h.html" title="corescheduler.h" alt="" coords="557,155,672,181"/>
+<area shape="rect" id="node15" href="$dcresource_8h.html" title="dcresource.h" alt="" coords="738,453,835,480"/>
+<area shape="rect" id="node7" href="$taskalloc_8h.html" title="taskalloc.h" alt="" coords="396,229,481,256"/>
+<area shape="rect" id="node8" href="$cloudtask_8h.html" title="cloudtask.h" alt="" coords="261,304,350,331"/>
+<area shape="rect" id="node10" href="$resourceconsumer_8h.html" title="resourceconsumer.h" alt="" coords="290,379,430,405"/>
+<area shape="rect" id="node11" href="$resdemand_8h.html" title="resdemand.h" alt="" coords="277,528,374,555"/>
+<area shape="rect" id="node12" href="$resource_8h.html" title="resource.h" alt="" coords="363,603,445,629"/>
+<area shape="rect" id="node17" href="$resourcespec_8h.html" title="resourcespec.h" alt="" coords="731,528,842,555"/>
+<area shape="rect" id="node18" href="$powermodel_8h.html" title="powermodel/powermodel.h" alt="" coords="825,603,999,629"/>
+</map>

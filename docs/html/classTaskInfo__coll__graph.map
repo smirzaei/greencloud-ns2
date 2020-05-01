@@ -1,0 +1,20 @@
+<map id="TaskInfo" name="TaskInfo">
+<area shape="rect" id="node12" href="$classCloudTask.html" title="CloudTask" alt="" coords="884,735,967,761"/>
+<area shape="rect" id="node2" href="$classResourceProvider.html" title="ResourceProvider" alt="" coords="629,288,752,315"/>
+<area shape="rect" id="node10" href="$classTskComSink.html" title="TskComSink" alt="" coords="889,377,985,404"/>
+<area shape="rect" id="node17" href="$classDcHost.html" title="DcHost" alt="" coords="182,467,247,493"/>
+<area shape="rect" id="node22" href="$classVmMigration.html" title="VmMigration" alt="" coords="502,467,597,493"/>
+<area shape="rect" id="node25" href="$classVM.html" title="VM" alt="" coords="419,377,461,404"/>
+<area shape="rect" id="node4" href="$classTskComAgent.html" title="TskComAgent" alt="" coords="815,199,919,225"/>
+<area shape="rect" id="node6" href="$classProviderOutAgent.html" title="ProviderOutAgent" alt="" coords="667,199,789,225"/>
+<area shape="rect" id="node8" href="$classPoaBufList.html" title="PoaBufList" alt="" coords="671,109,756,136"/>
+<area shape="rect" id="node9" href="$classPoaBuf.html" title="PoaBuf" alt="" coords="681,5,745,32"/>
+<area shape="rect" id="node11" href="$classByteCounter.html" title="ByteCounter" alt="" coords="994,288,1089,315"/>
+<area shape="rect" id="node23" href="$classVmMigrationSink.html" title="VmMigrationSink" alt="" coords="697,556,818,583"/>
+<area shape="rect" id="node13" href="$classResourceConsumer.html" title="ResourceConsumer" alt="" coords="469,288,605,315"/>
+<area shape="rect" id="node14" href="$classCloudUser.html" title="CloudUser" alt="" coords="656,645,739,672"/>
+<area shape="rect" id="node15" href="$classDataCenter.html" title="DataCenter" alt="" coords="295,556,382,583"/>
+<area shape="rect" id="node18" href="$classDcRack.html" title="DcRack" alt="" coords="21,377,89,404"/>
+<area shape="rect" id="node20" href="$classPowerModel.html" title="PowerModel" alt="" coords="113,377,207,404"/>
+<area shape="rect" id="node21" href="$classDcScheduler.html" title="DcScheduler" alt="" coords="332,467,428,493"/>
+</map>

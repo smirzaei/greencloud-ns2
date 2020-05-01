@@ -1,0 +1,158 @@
+#!/bin/bash
+
+BATCH=false
+GRAPHICAL=false
+ROOT_DIR=`pwd`
+TRACES_DIR=$ROOT_DIR/traces
+SCRIPTS_DIR=$ROOT_DIR/src/scripts
+BUILD_DIR=$ROOT_DIR/build
+SCHEDULER="Green" # Selects data center scheduler. Possible choice: "Green" "RoundRobin" "Random" "HEROS" "RandDENS" "BestDENS"
+TOPOLOGY="three-tier debug"
+DEADLINE=5
+
+# NOTE: this must match between ./run and ./scripts/postProcessTraceFiles.sh
+RESULTS_DIR_PREFIX=simulation
+CLEAN_OLD_RESULTS=true
+RANDOM_SEED=1
+
+#params parsing thanks to jehiah@github
+usage()
+{
+    echo "GreenCloud running script"
+    echo ""
+    echo "./run"
+    echo "    -h --help"
+    echo "    -b --batch=$BATCH"
+    echo "    -s --scheduler=$SCHEDULER"
+    echo "    -top --topology=$TOPOLOGY"
+    echo "    -d --deadline=$DEADLINE"
+    echo "    -t --trace-dir=$TRACES_DIR"
+    echo "    -c --clean-old=$CLEAN_OLD_RESULTS"
+    echo "    -top --topology=$TOPOLOGY"
+    echo ""
+}
+ 
+while [ "$1" != "" ]; do
+    PARAM=`echo $1 | awk -F= '{print $1}'`
+    VALUE=`echo $1 | awk -F= '{print $2}'`
+    case $PARAM in
+        -h | --help)
+            usage
+            exit
+            ;;
+        -b | --batch)
+            BATCH=true
+            GRAPHICAL=false
+            ;;
+        -t | --trace-dir)
+           TRACES_DIR=$ROOT_DIR/$VALUE
+            ;;
+        -c |--clean-old)
+           CLEAN_OLD_RESULTS=$VALUE
+            ;;
+		-r | --random-seed)
+	 	 	RANDOM_SEED=$VALUE
+	    	;;
+        -s |  --scheduler)
+	  		SCHEDULER=$VALUE
+            ;;
+        -d |  --deadline)
+	  		DEADLINE=$VALUE
+            ;;
+        -top | --topology)
+	  		TOPOLOGY=$VALUE
+            ;;
+        *)
+            echo "ERROR: unknown parameter \"$PARAM\""
+            usage
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+
+source $ROOT_DIR/build/environment.sh
+mkdir $TRACES_DIR -p
+
+# un-comment these to show a warning before cleaning out old results
+#echo "WARNING: about to remove old run data in $TRACES_DIR.
+#(Press Enter to continue or Ctrl+C to cancel.)"
+#read inputLine
+if [ "$CLEAN_OLD_RESULTS" = true ]
+then
+rm -rf $TRACES_DIR/$RESULTS_DIR_PREFIX*
+fi
+
+# counter variable for naming the output directories
+runNumber=1
+
+
+# Data center average load
+for load in  "0.3" # "0.0001" "0.1" "0.2" "0.3" "0.4" "0.5" "0.6" "0.7" "0.8" "0.9" "1.0"
+do
+#for deadline in "1" "2" "5" "10" "20"
+#do
+for memory in "1000000" # "2000000000"
+do
+    echo "***********************"
+    echo "** Starting load=$load **"
+    echo "***********************"
+
+    STARTTIME=$(date +%s)
+    RESULTS_DIR=$TRACES_DIR/$RESULTS_DIR_PREFIX-$(date +%Y-%m-%d.%H.%M.%S)
+    mkdir -p $RESULTS_DIR
+    echo "load real user system maxMem"> $RESULTS_DIR/time.out
+
+    cd $SCRIPTS_DIR
+    #The valgrind output can be large (few MB)!
+    #valgrind --leak-check=full --log-file=valgrindout.txt $BUILD_DIR/ns-*/ns main2.tcl $load $deadline $memory# Memory testing
+    echo "Starting simulation using following parameters:"
+    echo /usr/bin/time -f "$load %e %U %S %M" -o $RESULTS_DIR/time.out -a $BUILD_DIR/ns-*/ns main2.tcl "${load}" "${DEADLINE}" "${memory}" "${RESULTS_DIR}" "${RANDOM_SEED}" "${SCHEDULER}" "${TOPOLOGY}"
+    echo
+	/usr/bin/time -f "$load %e %U %S %M" -o $RESULTS_DIR/time.out -a $BUILD_DIR/ns-*/ns main2.tcl "${load}" "${DEADLINE}" "${memory}" "${RESULTS_DIR}" "${RANDOM_SEED}" "${SCHEDULER}" "${TOPOLOGY}"
+    #$BUILD_DIR/ns-*/ns main2.tcl $load $deadline $memory
+    errorCode=$?
+    if [ "$errorCode" -ne 0 ]
+    then
+        echo "ERROR: Stopping because NS returned error code $errorCode"
+        break
+    fi
+    cd $ROOT_DIR
+
+    # Simulation time calculation
+    ENDTIME=$(date +%s)
+    DIFF=$(( $ENDTIME - $STARTTIME ))
+    DIFF=$(( $DIFF / 60 ))
+    echo "Simulation time: $DIFF minutes"
+
+    echo
+    echo "Fixing NAM file ordering..."
+    $SCRIPTS_DIR/postProcessNamFiles.sh $RESULTS_DIR
+
+#    echo
+#    echo "Moving trace files into subdirectory..."
+#    mv -f $TRACES_DIR/*.nam $RESULTS_DIR/
+#    mv -f $TRACES_DIR/*.tr $RESULTS_DIR/
+    
+    echo "Done with load=$load."    
+done
+#done
+done
+
+echo
+
+if [ "$GRAPHICAL" = true ]
+then
+echo "Generating data.js for GreenCloud Dashboard..."
+$SCRIPTS_DIR/postProcessTraceFiles.sh $TRACES_DIR
+echo "Done with all simulations."
+fi
+
+# un-comment this if you want to auto-show the dashboard
+if [ "$GRAPHICAL" = true ]
+then
+	echo "Showing results..."
+	firefox "$ROOT_DIR/show-dashboard.html"
+fi
+

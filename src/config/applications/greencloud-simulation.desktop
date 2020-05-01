@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GreenCloud Simulation
+Comment=Do a simulation run using the current GreenCloud configuration
+Icon=/home/greencloud/greencloud/src/dashboard/images/logo.png
+Exec=gnome-terminal -x /home/greencloud/greencloud/run
+Path=/home/greencloud/greencloud/
+Terminal=false
+

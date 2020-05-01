@@ -1,0 +1,18 @@
+<map id="resourceprovider.h" name="resourceprovider.h">
+<area shape="rect" id="node5" href="$resource_8h.html" title="resource.h" alt="" coords="1178,603,1261,629"/>
+<area shape="rect" id="node8" href="$dcresource_8h.html" title="dcresource.h" alt="" coords="348,453,445,480"/>
+<area shape="rect" id="node13" href="$cpu_8h.html" title="cpu.h" alt="" coords="563,80,617,107"/>
+<area shape="rect" id="node14" href="$corescheduler_8h.html" title="corescheduler.h" alt="" coords="586,155,701,181"/>
+<area shape="rect" id="node16" href="$cloudtask_8h.html" title="cloudtask.h" alt="" coords="965,304,1055,331"/>
+<area shape="rect" id="node18" href="$resourceconsumer_8h.html" title="resourceconsumer.h" alt="" coords="1191,379,1331,405"/>
+<area shape="rect" id="node21" href="$nic_8h.html" title="nic.h" alt="" coords="309,304,359,331"/>
+<area shape="rect" id="node24" href="$provideroutagent_8h.html" title="provideroutagent.h" alt="" coords="796,80,923,107"/>
+<area shape="rect" id="node26" href="$vmmigrationsink_8h.html" title="vmmigrationsink.h" alt="" coords="1049,80,1176,107"/>
+<area shape="rect" id="node29" href="$tskagent_8h.html" title="tskagent.h" alt="" coords="1265,80,1347,107"/>
+<area shape="rect" id="node32" href="$taskinfo_8h.html" title="taskinfo.h" alt="" coords="693,80,772,107"/>
+<area shape="rect" id="node10" href="$resourcespec_8h.html" title="resourcespec.h" alt="" coords="295,528,405,555"/>
+<area shape="rect" id="node11" href="$powermodel_8h.html" title="powermodel/powermodel.h" alt="" coords="136,603,311,629"/>
+<area shape="rect" id="node15" href="$taskalloc_8h.html" title="taskalloc.h" alt="" coords="813,229,898,256"/>
+<area shape="rect" id="node19" href="$resdemand_8h.html" title="resdemand.h" alt="" coords="1097,528,1195,555"/>
+<area shape="rect" id="node28" href="$bytecounter_8h.html" title="bytecounter.h" alt="" coords="1103,229,1205,256"/>
+</map>

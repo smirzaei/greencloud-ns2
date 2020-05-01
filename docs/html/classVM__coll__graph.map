@@ -1,0 +1,10 @@
+<map id="VM" name="VM">
+<area shape="rect" id="node3" href="$classResourceProvider.html" title="ResourceProvider" alt="" coords="267,288,389,315"/>
+<area shape="rect" id="node11" href="$classTskComSink.html" title="TskComSink" alt="" coords="380,377,476,404"/>
+<area shape="rect" id="node5" href="$classTskComAgent.html" title="TskComAgent" alt="" coords="339,199,443,225"/>
+<area shape="rect" id="node7" href="$classProviderOutAgent.html" title="ProviderOutAgent" alt="" coords="517,199,640,225"/>
+<area shape="rect" id="node9" href="$classPoaBufList.html" title="PoaBufList" alt="" coords="593,109,679,136"/>
+<area shape="rect" id="node10" href="$classPoaBuf.html" title="PoaBuf" alt="" coords="604,5,668,32"/>
+<area shape="rect" id="node12" href="$classByteCounter.html" title="ByteCounter" alt="" coords="518,288,613,315"/>
+<area shape="rect" id="node13" href="$classResourceConsumer.html" title="ResourceConsumer" alt="" coords="107,288,243,315"/>
+</map>

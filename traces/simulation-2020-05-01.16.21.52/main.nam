@@ -1,0 +1,273 @@
+V -t * -v 1.0a5 -a 0
+W -t * -x 1024 -y 500.0
+A -t * -n 1 -p 0 -o 0x7fffffff -c 30 -a 1
+A -t * -h 1 -m 1073741823 -s 0
+n -t * -a 0 -s 0 -S UP -v circle -c black -i black -x 200 -y 400.0 -Z 0.0
+n -t * -a 1 -s 1 -S UP -v circle -c black -i black -x 400 -y 400.0 -Z 0.0
+n -t * -a 2 -s 2 -S UP -v circle -c black -i black -x 600 -y 400.0 -Z 0.0
+n -t * -a 3 -s 3 -S UP -v circle -c black -i black -x 800 -y 400.0 -Z 0.0
+n -t * -a 4 -s 4 -S UP -v circle -c black -i black -x 111 -y 300.0 -Z 0.0
+n -t * -a 5 -s 5 -S UP -v circle -c black -i black -x 222 -y 300.0 -Z 0.0
+n -t * -a 6 -s 6 -S UP -v circle -c black -i black -x 333 -y 300.0 -Z 0.0
+n -t * -a 7 -s 7 -S UP -v circle -c black -i black -x 444 -y 300.0 -Z 0.0
+n -t * -a 8 -s 8 -S UP -v circle -c black -i black -x 555 -y 300.0 -Z 0.0
+n -t * -a 9 -s 9 -S UP -v circle -c black -i black -x 666 -y 300.0 -Z 0.0
+n -t * -a 10 -s 10 -S UP -v circle -c black -i black -x 777 -y 300.0 -Z 0.0
+n -t * -a 11 -s 11 -S UP -v circle -c black -i black -x 888 -y 300.0 -Z 0.0
+n -t * -a 12 -s 12 -S UP -v circle -c black -i black -x 30 -y 200.0 -Z 0.0
+n -t * -a 13 -s 13 -S UP -v circle -c black -i black -x 60 -y 200.0 -Z 0.0
+n -t * -a 14 -s 14 -S UP -v circle -c black -i black -x 90 -y 200.0 -Z 0.0
+n -t * -a 15 -s 15 -S UP -v circle -c black -i black -x 120 -y 200.0 -Z 0.0
+n -t * -a 16 -s 16 -S UP -v circle -c black -i black -x 150 -y 200.0 -Z 0.0
+n -t * -a 17 -s 17 -S UP -v circle -c black -i black -x 180 -y 200.0 -Z 0.0
+n -t * -a 18 -s 18 -S UP -v circle -c black -i black -x 210 -y 200.0 -Z 0.0
+n -t * -a 19 -s 19 -S UP -v circle -c black -i black -x 240 -y 200.0 -Z 0.0
+n -t * -a 20 -s 20 -S UP -v circle -c black -i black -x 270 -y 200.0 -Z 0.0
+n -t * -a 21 -s 21 -S UP -v circle -c black -i black -x 300 -y 200.0 -Z 0.0
+n -t * -a 22 -s 22 -S UP -v circle -c black -i black -x 330 -y 200.0 -Z 0.0
+n -t * -a 23 -s 23 -S UP -v circle -c black -i black -x 360 -y 200.0 -Z 0.0
+n -t * -a 24 -s 24 -S UP -v circle -c black -i black -x 390 -y 200.0 -Z 0.0
+n -t * -a 25 -s 25 -S UP -v circle -c black -i black -x 420 -y 200.0 -Z 0.0
+n -t * -a 26 -s 26 -S UP -v circle -c black -i black -x 450 -y 200.0 -Z 0.0
+n -t * -a 27 -s 27 -S UP -v circle -c black -i black -x 480 -y 200.0 -Z 0.0
+n -t * -a 28 -s 28 -S UP -v circle -c black -i black -x 510 -y 200.0 -Z 0.0
+n -t * -a 29 -s 29 -S UP -v circle -c black -i black -x 540 -y 200.0 -Z 0.0
+n -t * -a 30 -s 30 -S UP -v circle -c black -i black -x 570 -y 200.0 -Z 0.0
+n -t * -a 31 -s 31 -S UP -v circle -c black -i black -x 600 -y 200.0 -Z 0.0
+n -t * -a 32 -s 32 -S UP -v circle -c black -i black -x 630 -y 200.0 -Z 0.0
+n -t * -a 33 -s 33 -S UP -v circle -c black -i black -x 660 -y 200.0 -Z 0.0
+n -t * -a 34 -s 34 -S UP -v circle -c black -i black -x 690 -y 200.0 -Z 0.0
+n -t * -a 35 -s 35 -S UP -v circle -c black -i black -x 720 -y 200.0 -Z 0.0
+n -t * -a 36 -s 36 -S UP -v circle -c black -i black -x 750 -y 200.0 -Z 0.0
+n -t * -a 37 -s 37 -S UP -v circle -c black -i black -x 780 -y 200.0 -Z 0.0
+n -t * -a 38 -s 38 -S UP -v circle -c black -i black -x 810 -y 200.0 -Z 0.0
+n -t * -a 39 -s 39 -S UP -v circle -c black -i black -x 840 -y 200.0 -Z 0.0
+n -t * -a 40 -s 40 -S UP -v circle -c black -i black -x 870 -y 200.0 -Z 0.0
+n -t * -a 41 -s 41 -S UP -v circle -c black -i black -x 900 -y 200.0 -Z 0.0
+n -t * -a 42 -s 42 -S UP -v circle -c black -i black -x 930 -y 200.0 -Z 0.0
+n -t * -a 43 -s 43 -S UP -v circle -c black -i black -x 960 -y 200.0 -Z 0.0
+n -t * -a 44 -s 44 -S UP -v circle -c black -i black -x 16 -y 100.0 -Z 0.0
+n -t * -a 45 -s 45 -S UP -v circle -c black -i black -x 32 -y 100.0 -Z 0.0
+n -t * -a 46 -s 46 -S UP -v circle -c black -i black -x 48 -y 100.0 -Z 0.0
+n -t * -a 47 -s 47 -S UP -v circle -c black -i black -x 64 -y 100.0 -Z 0.0
+n -t * -a 48 -s 48 -S UP -v circle -c black -i black -x 80 -y 100.0 -Z 0.0
+n -t * -a 49 -s 49 -S UP -v circle -c black -i black -x 96 -y 100.0 -Z 0.0
+n -t * -a 50 -s 50 -S UP -v circle -c black -i black -x 112 -y 100.0 -Z 0.0
+n -t * -a 51 -s 51 -S UP -v circle -c black -i black -x 128 -y 100.0 -Z 0.0
+n -t * -a 52 -s 52 -S UP -v circle -c black -i black -x 144 -y 100.0 -Z 0.0
+n -t * -a 53 -s 53 -S UP -v circle -c black -i black -x 160 -y 100.0 -Z 0.0
+n -t * -a 54 -s 54 -S UP -v circle -c black -i black -x 176 -y 100.0 -Z 0.0
+n -t * -a 55 -s 55 -S UP -v circle -c black -i black -x 192 -y 100.0 -Z 0.0
+n -t * -a 56 -s 56 -S UP -v circle -c black -i black -x 208 -y 100.0 -Z 0.0
+n -t * -a 57 -s 57 -S UP -v circle -c black -i black -x 224 -y 100.0 -Z 0.0
+n -t * -a 58 -s 58 -S UP -v circle -c black -i black -x 240 -y 100.0 -Z 0.0
+n -t * -a 59 -s 59 -S UP -v circle -c black -i black -x 256 -y 100.0 -Z 0.0
+n -t * -a 60 -s 60 -S UP -v circle -c black -i black -x 272 -y 100.0 -Z 0.0
+n -t * -a 61 -s 61 -S UP -v circle -c black -i black -x 288 -y 100.0 -Z 0.0
+n -t * -a 62 -s 62 -S UP -v circle -c black -i black -x 304 -y 100.0 -Z 0.0
+n -t * -a 63 -s 63 -S UP -v circle -c black -i black -x 320 -y 100.0 -Z 0.0
+n -t * -a 64 -s 64 -S UP -v circle -c black -i black -x 336 -y 100.0 -Z 0.0
+n -t * -a 65 -s 65 -S UP -v circle -c black -i black -x 352 -y 100.0 -Z 0.0
+n -t * -a 66 -s 66 -S UP -v circle -c black -i black -x 368 -y 100.0 -Z 0.0
+n -t * -a 67 -s 67 -S UP -v circle -c black -i black -x 384 -y 100.0 -Z 0.0
+n -t * -a 68 -s 68 -S UP -v circle -c black -i black -x 400 -y 100.0 -Z 0.0
+n -t * -a 69 -s 69 -S UP -v circle -c black -i black -x 416 -y 100.0 -Z 0.0
+n -t * -a 70 -s 70 -S UP -v circle -c black -i black -x 432 -y 100.0 -Z 0.0
+n -t * -a 71 -s 71 -S UP -v circle -c black -i black -x 448 -y 100.0 -Z 0.0
+n -t * -a 72 -s 72 -S UP -v circle -c black -i black -x 464 -y 100.0 -Z 0.0
+n -t * -a 73 -s 73 -S UP -v circle -c black -i black -x 480 -y 100.0 -Z 0.0
+n -t * -a 74 -s 74 -S UP -v circle -c black -i black -x 496 -y 100.0 -Z 0.0
+n -t * -a 75 -s 75 -S UP -v circle -c black -i black -x 512 -y 100.0 -Z 0.0
+n -t * -a 76 -s 76 -S UP -v circle -c black -i black -x 528 -y 100.0 -Z 0.0
+n -t * -a 77 -s 77 -S UP -v circle -c black -i black -x 544 -y 100.0 -Z 0.0
+n -t * -a 78 -s 78 -S UP -v circle -c black -i black -x 560 -y 100.0 -Z 0.0
+n -t * -a 79 -s 79 -S UP -v circle -c black -i black -x 576 -y 100.0 -Z 0.0
+n -t * -a 80 -s 80 -S UP -v circle -c black -i black -x 592 -y 100.0 -Z 0.0
+n -t * -a 81 -s 81 -S UP -v circle -c black -i black -x 608 -y 100.0 -Z 0.0
+n -t * -a 82 -s 82 -S UP -v circle -c black -i black -x 624 -y 100.0 -Z 0.0
+n -t * -a 83 -s 83 -S UP -v circle -c black -i black -x 640 -y 100.0 -Z 0.0
+n -t * -a 84 -s 84 -S UP -v circle -c black -i black -x 656 -y 100.0 -Z 0.0
+n -t * -a 85 -s 85 -S UP -v circle -c black -i black -x 672 -y 100.0 -Z 0.0
+n -t * -a 86 -s 86 -S UP -v circle -c black -i black -x 688 -y 100.0 -Z 0.0
+n -t * -a 87 -s 87 -S UP -v circle -c black -i black -x 704 -y 100.0 -Z 0.0
+n -t * -a 88 -s 88 -S UP -v circle -c black -i black -x 720 -y 100.0 -Z 0.0
+n -t * -a 89 -s 89 -S UP -v circle -c black -i black -x 736 -y 100.0 -Z 0.0
+n -t * -a 90 -s 90 -S UP -v circle -c black -i black -x 752 -y 100.0 -Z 0.0
+n -t * -a 91 -s 91 -S UP -v circle -c black -i black -x 768 -y 100.0 -Z 0.0
+n -t * -a 92 -s 92 -S UP -v circle -c black -i black -x 784 -y 100.0 -Z 0.0
+n -t * -a 93 -s 93 -S UP -v circle -c black -i black -x 800 -y 100.0 -Z 0.0
+n -t * -a 94 -s 94 -S UP -v circle -c black -i black -x 816 -y 100.0 -Z 0.0
+n -t * -a 95 -s 95 -S UP -v circle -c black -i black -x 832 -y 100.0 -Z 0.0
+n -t * -a 96 -s 96 -S UP -v circle -c black -i black -x 848 -y 100.0 -Z 0.0
+n -t * -a 97 -s 97 -S UP -v circle -c black -i black -x 864 -y 100.0 -Z 0.0
+n -t * -a 98 -s 98 -S UP -v circle -c black -i black -x 880 -y 100.0 -Z 0.0
+n -t * -a 99 -s 99 -S UP -v circle -c black -i black -x 896 -y 100.0 -Z 0.0
+n -t * -a 100 -s 100 -S UP -v circle -c black -i black -x 912 -y 100.0 -Z 0.0
+n -t * -a 101 -s 101 -S UP -v circle -c black -i black -x 928 -y 100.0 -Z 0.0
+n -t * -a 102 -s 102 -S UP -v circle -c black -i black -x 944 -y 100.0 -Z 0.0
+n -t * -a 103 -s 103 -S UP -v circle -c black -i black -x 960 -y 100.0 -Z 0.0
+n -t * -a 104 -s 104 -S UP -v circle -c black -i black -x 976 -y 100.0 -Z 0.0
+n -t * -a 105 -s 105 -S UP -v circle -c black -i black -x 992 -y 100.0 -Z 0.0
+n -t * -a 106 -s 106 -S UP -v circle -c black -i black -x 1008 -y 100.0 -Z 0.0
+n -t * -a 107 -s 107 -S UP -v circle -c black -i black -x 1024 -y 100.0 -Z 0.0
+n -t * -a 108 -s 108 -S UP -v circle -c black -i black -x 500.0 -y 500.0 -Z 0.0
+l -t * -s 0 -d 4 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 0 -d 5 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 0 -d 6 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 0 -d 7 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 0 -d 8 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 0 -d 9 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 0 -d 10 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 0 -d 11 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 1 -d 4 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 1 -d 5 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 1 -d 6 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 1 -d 7 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 1 -d 8 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 1 -d 9 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 1 -d 10 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 1 -d 11 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 2 -d 4 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 2 -d 5 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 2 -d 6 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 2 -d 7 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 2 -d 8 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 2 -d 9 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 2 -d 10 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 2 -d 11 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 3 -d 4 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 3 -d 5 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 3 -d 6 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 3 -d 7 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 3 -d 8 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 3 -d 9 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 3 -d 10 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 3 -d 11 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 4 -d 12 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 5 -d 12 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 4 -d 13 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 5 -d 13 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 4 -d 14 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 5 -d 14 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 4 -d 15 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 5 -d 15 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 4 -d 16 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 5 -d 16 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 4 -d 17 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 5 -d 17 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 4 -d 18 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 5 -d 18 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 4 -d 19 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 5 -d 19 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 6 -d 20 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 7 -d 20 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 6 -d 21 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 7 -d 21 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 6 -d 22 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 7 -d 22 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 6 -d 23 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 7 -d 23 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 6 -d 24 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 7 -d 24 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 6 -d 25 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 7 -d 25 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 6 -d 26 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 7 -d 26 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 6 -d 27 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 7 -d 27 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 8 -d 28 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 9 -d 28 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 8 -d 29 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 9 -d 29 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 8 -d 30 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 9 -d 30 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 8 -d 31 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 9 -d 31 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 8 -d 32 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 9 -d 32 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 8 -d 33 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 9 -d 33 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 8 -d 34 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 9 -d 34 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 8 -d 35 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 9 -d 35 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 10 -d 36 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 11 -d 36 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 10 -d 37 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 11 -d 37 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 10 -d 38 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 11 -d 38 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 10 -d 39 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 11 -d 39 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 10 -d 40 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 11 -d 40 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 10 -d 41 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 11 -d 41 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 10 -d 42 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 11 -d 42 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 10 -d 43 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 11 -d 43 -S UP -r 10000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 12 -d 44 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 12 -d 45 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 13 -d 46 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 13 -d 47 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 14 -d 48 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 14 -d 49 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 15 -d 50 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 15 -d 51 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 16 -d 52 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 16 -d 53 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 17 -d 54 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 17 -d 55 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 18 -d 56 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 18 -d 57 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 19 -d 58 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 19 -d 59 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 20 -d 60 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 20 -d 61 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 21 -d 62 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 21 -d 63 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 22 -d 64 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 22 -d 65 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 23 -d 66 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 23 -d 67 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 24 -d 68 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 24 -d 69 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 25 -d 70 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 25 -d 71 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 26 -d 72 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 26 -d 73 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 27 -d 74 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 27 -d 75 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 28 -d 76 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 28 -d 77 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 29 -d 78 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 29 -d 79 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 30 -d 80 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 30 -d 81 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 31 -d 82 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 31 -d 83 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 32 -d 84 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 32 -d 85 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 33 -d 86 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 33 -d 87 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 34 -d 88 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 34 -d 89 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 35 -d 90 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 35 -d 91 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 36 -d 92 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 36 -d 93 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 37 -d 94 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 37 -d 95 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 38 -d 96 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 38 -d 97 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 39 -d 98 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 39 -d 99 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 40 -d 100 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 40 -d 101 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 41 -d 102 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 41 -d 103 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 42 -d 104 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 42 -d 105 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 43 -d 106 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black
+l -t * -s 43 -d 107 -S UP -r 1000000000 -D 3.3000000000000002e-06 -c black

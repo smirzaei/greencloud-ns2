@@ -1,0 +1,17 @@
+<map id="DataCenter" name="DataCenter">
+<area shape="rect" id="node3" href="$classDcHost.html" title="DcHost" alt="" coords="169,467,234,493"/>
+<area shape="rect" id="node14" href="$classDcRack.html" title="DcRack" alt="" coords="21,377,89,404"/>
+<area shape="rect" id="node16" href="$classPowerModel.html" title="PowerModel" alt="" coords="164,377,257,404"/>
+<area shape="rect" id="node18" href="$classVmMigration.html" title="VmMigration" alt="" coords="498,467,593,493"/>
+<area shape="rect" id="node22" href="$classVM.html" title="VM" alt="" coords="433,377,476,404"/>
+<area shape="rect" id="node4" href="$classResourceProvider.html" title="ResourceProvider" alt="" coords="427,288,549,315"/>
+<area shape="rect" id="node12" href="$classTskComSink.html" title="TskComSink" alt="" coords="641,377,737,404"/>
+<area shape="rect" id="node6" href="$classTskComAgent.html" title="TskComAgent" alt="" coords="328,199,432,225"/>
+<area shape="rect" id="node8" href="$classProviderOutAgent.html" title="ProviderOutAgent" alt="" coords="547,199,669,225"/>
+<area shape="rect" id="node10" href="$classPoaBufList.html" title="PoaBufList" alt="" coords="708,109,793,136"/>
+<area shape="rect" id="node11" href="$classPoaBuf.html" title="PoaBuf" alt="" coords="719,5,783,32"/>
+<area shape="rect" id="node13" href="$classByteCounter.html" title="ByteCounter" alt="" coords="905,288,999,315"/>
+<area shape="rect" id="node20" href="$classVmMigrationSink.html" title="VmMigrationSink" alt="" coords="763,556,885,583"/>
+<area shape="rect" id="node17" href="$classDcScheduler.html" title="DcScheduler" alt="" coords="332,467,428,493"/>
+<area shape="rect" id="node19" href="$classResourceConsumer.html" title="ResourceConsumer" alt="" coords="744,288,880,315"/>
+</map>

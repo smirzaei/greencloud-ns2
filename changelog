@@ -1,0 +1,122 @@
+CHANGELOG - Version 2.1.2
+-------------------------
+
+Doxygen: New feature
+	Added doxygen documentation of main simulator classes in pdf and html formats
+
+Dashborad: New features
+	Info signs are introduced to provide description of charts and certain values
+	Fixed captions in a number of charts.
+
+main.tcl: bugfix
+	Fixed link capacity between rack and aggregation switches from 1 Gb/s to 10 Gb/s
+
+run.sh: update
+	Changed default scheduler from Green to HEROS  
+
+CHANGELOG - Version 2.1.0
+-------------------------
+
+run.sh: parameters
+	The run script accept parameters for easier customization of simulations.
+	Please execute ./run -h for their list
+	Parameters should have form -parameter=value
+
+clouduser.h (and others): task response time measurements
+	The task response time are being measured. Due to the resulting scanning of packet,
+	tasks' output communication is serialized (no channel sharing)
+
+dcscheduler directory: schedulers are implemented as classes
+	Schedulers are implemented as classes, they can be selected as a parameter of a simulation
+
+powermodels directory: new power models
+	New power models for full system and per component power models.
+	
+herosscheduler: new scheduler
+	HEROS scheduler is a new scheduler, presented at IEEE CLOUD 2015 conference in the following paper:
+	HEROS: Energy-Efficient Load Balancing for Heterogeneous Data Centers
+	Mateusz Guzek, Dzmitry Kliazovich, Pascal Bouvry 
+	Available upon request at: http://hdl.handle.net/10993/21417
+
+topology.tcl and dc.tcl: new heterogeneous topologies
+	New heterogeneous data center configurations are available, in which servers have different 
+	capabilities and have different power functions. The new topologies names are:
+	"three-tier heterogenous debug" and "three-tier heterogenous". 
+	They are described in HEROS paper (see above).
+	
+percomponentmodel.h: new power model
+	The new power model enables to estimate power consumption as the sum of the consumption 
+	of the dcresources of a server. The consumption of dcresources is estimated as as any power model.
+	
+corescheduler.cc: bugfix
+	Remove completed task function corrected.
+
+vmmigration.cc: bugfix
+	Missing argument in line 133 added. This could cause crashes of simulator on some platforms. 
+	
+taskoutsink.cc: bugfix 
+	After successful communication the host energy counter is updated to flush 
+	communication counter and enable entering host into sleep mode (addition in line 48)
+	
+corescheduler.cc: bugfix
+	Change of comparison  with  deadline instead of comparison with execution time (line 280)
+
+CHANGELOG - Version 2.0.2
+-------------------------
+
+vmmigration.cc: Bugfix
+    The communication agents of VMs are not properly re-attached after migration. 
+
+CHANGELOG - Version 2.0.1
+-------------------------
+
+install_local.sh: New instalation script
+    The script can be used to install GreenCloud without root previliges. 
+	In such case, it should be run instead of install.sh
+	
+64-bit compatilibility: improvements
+	The GreenCloud can be now directly used on 64-bit installations. 
+	The changes inculded solving old implementation of pointer-casting.
+
+DNS on servers: funcitonality restored
+   	According to users request, the functionality
+   	
+CHANGELOG - Version 2.0.0
+-------------------------
+
+Detailed description of servers resources: New features
+    Host resources are now divided into types. 
+	The resource types are used during allocation and power modeling.
+	Hosts are assembled from components, that provides resources.
+	The predefined types are: Computing, Memory, Storage, Networking.
+	Memory and Storage utilization are static, while Compiuting and Networking are dynamic (based on cpu scheduler or ns-2 networkign layer).
+	Heterogenous hosts: each host specification is separetely and independently defined.   
+	
+Virtualization: New features
+	A new layer of virtualization is available.
+	VM are intermediary between Hosts and Tasks.
+	A new abstractions are created: ResourceConsumer and ResourceProvider.
+	Tasks are ResourceConsumers, Hosts are ResourceProviders, VMs are both ResourceConsumers and ResourceProviders.
+	Tasks can be allocated on any ResourceProvider.
+	There can be arbitrary number of nested VMs.
+	VM dynamic migration is enabled.
+	Load of a Host is computed recursively, taking into account the virtualization.
+	
+Power models: New features
+	The power models are now described by separate class.
+	Two sample models are presented: a simple model used in GreenCloud 1 and low power blade.
+	
+Multi-core processors: New features
+	Multi-core processors and multi-processors systems are supported.
+	The processors can be assymteric (e.g cores may have different speeds and architectures)
+	The scheduling is performed per-core.
+	Tasks can be multi-threaded, i.e. have multiple computing demands. In such case they can be allocated in a valid (i.e. not violaiting constraints) ways on a single core or multpile cores ( possibly on different CPUs) of a single host. 
+	
+Dashborad: New features
+	Dashboard presents now plots for tasks and load of VMs.
+	Dashboard presents statistics for tasks rejected on data center scheduler and tasks failed on host level. 
+	
+Tcl scripts: Improvements
+	user.tcl	- All user-related deifitions and behavior was moved to this file
+	dc.tcl		- The data center capacity is dynamically calculated basing on the declated hosts capacities.
+				- Simple static virtualization section that creates a single VM per host is added.

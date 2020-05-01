@@ -1,0 +1,7 @@
+<map id="Resource" name="Resource">
+<area shape="rect" id="node2" href="$classDcResource.html" title="DcResource" alt="" coords="18,80,111,107"/>
+<area shape="rect" id="node5" href="$classResDemand.html" title="ResDemand" alt="" coords="135,80,229,107"/>
+<area shape="rect" id="node6" href="$classResourceSpec.html" title="ResourceSpec" alt="" coords="253,80,359,107"/>
+<area shape="rect" id="node3" href="$classCPU.html" title="CPU" alt="" coords="5,155,55,181"/>
+<area shape="rect" id="node4" href="$classNIC.html" title="NIC" alt="" coords="79,155,122,181"/>
+</map>

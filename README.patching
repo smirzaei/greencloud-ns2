@@ -1,0 +1,21 @@
+If you make changes to any of the out-of-the-box NS2 source files,then you will need to re-generate the patch file, as described here.
+
+1.  Make a "plain patched" version of the NS2 tree, which doesn't contain any of
+    the GreenCloud source files by running:
+        
+        src/scripts/preparePatchDirectories.sh
+    
+    to create a new patched working directory in src/ns2-patching (this also 
+    creates an un-patched version in src/ns2-patching.original).
+2.  Make your modifications to the "plain patched" source tree (edit the files
+    in build/ns-*, not in src/ns2)
+    
+    NOTE: sometimes it is helpful to make changes in the build/ns* directory,
+          so that you can build and test as you go, and then copy your changes
+          over to src/ns2-patching using a diff tool such as Meld or Kompare.
+     
+3.  Re-generate the new diff file by running:
+    
+        src/scripts/generateNewPatchFile.sh
+    
+    This updates NS2-GreenCloud.diff, and will also delete the working directories.

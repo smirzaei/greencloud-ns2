@@ -1,0 +1,22 @@
+<map id="bestscorescheduler.h" name="bestscorescheduler.h">
+<area shape="rect" id="node2" href="$scorescheduler_8h.html" title="scorescheduler.h" alt="" coords="327,80,449,107"/>
+<area shape="rect" id="node36" href="$providerscore_8h.html" title="providerscore.h" alt="" coords="531,155,640,181"/>
+<area shape="rect" id="node3" href="$dcscheduler_8h.html" title="dcscheduler.h" alt="" coords="329,155,431,181"/>
+<area shape="rect" id="node4" href="$tskagent_8h.html" title="tskagent.h" alt="" coords="96,304,179,331"/>
+<area shape="rect" id="node8" href="$cloudtask_8h.html" title="cloudtask.h" alt="" coords="539,528,629,555"/>
+<area shape="rect" id="node24" href="$resourceprovider_8h.html" title="resourceprovider.h" alt="" coords="591,229,718,256"/>
+<area shape="rect" id="node10" href="$resourceconsumer_8h.html" title="resourceconsumer.h" alt="" coords="410,603,550,629"/>
+<area shape="rect" id="node11" href="$resdemand_8h.html" title="resdemand.h" alt="" coords="502,752,599,779"/>
+<area shape="rect" id="node14" href="$resource_8h.html" title="resource.h" alt="" coords="400,827,483,853"/>
+<area shape="rect" id="node18" href="$dcresource_8h.html" title="dcresource.h" alt="" coords="1053,677,1150,704"/>
+<area shape="rect" id="node20" href="$resourcespec_8h.html" title="resourcespec.h" alt="" coords="937,752,1047,779"/>
+<area shape="rect" id="node21" href="$powermodel_8h.html" title="powermodel/powermodel.h" alt="" coords="1014,827,1189,853"/>
+<area shape="rect" id="node25" href="$cpu_8h.html" title="cpu.h" alt="" coords="1011,304,1066,331"/>
+<area shape="rect" id="node26" href="$corescheduler_8h.html" title="corescheduler.h" alt="" coords="757,379,872,405"/>
+<area shape="rect" id="node28" href="$nic_8h.html" title="nic.h" alt="" coords="1421,528,1472,555"/>
+<area shape="rect" id="node30" href="$provideroutagent_8h.html" title="provideroutagent.h" alt="" coords="1167,304,1294,331"/>
+<area shape="rect" id="node32" href="$vmmigrationsink_8h.html" title="vmmigrationsink.h" alt="" coords="655,304,782,331"/>
+<area shape="rect" id="node35" href="$taskinfo_8h.html" title="taskinfo.h" alt="" coords="553,304,631,331"/>
+<area shape="rect" id="node27" href="$taskalloc_8h.html" title="taskalloc.h" alt="" coords="728,453,813,480"/>
+<area shape="rect" id="node34" href="$bytecounter_8h.html" title="bytecounter.h" alt="" coords="603,453,704,480"/>
+</map>

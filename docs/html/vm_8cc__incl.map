@@ -1,0 +1,20 @@
+<map id="vm.cc" name="vm.cc">
+<area shape="rect" id="node2" href="$vm_8h.html" title="vm.h" alt="" coords="416,80,465,107"/>
+<area shape="rect" id="node6" href="$resourceprovider_8h.html" title="resourceprovider.h" alt="" coords="955,155,1081,181"/>
+<area shape="rect" id="node22" href="$resourceconsumer_8h.html" title="resourceconsumer.h" alt="" coords="844,528,984,555"/>
+<area shape="rect" id="node10" href="$resource_8h.html" title="resource.h" alt="" coords="791,752,874,779"/>
+<area shape="rect" id="node13" href="$dcresource_8h.html" title="dcresource.h" alt="" coords="397,603,495,629"/>
+<area shape="rect" id="node18" href="$cpu_8h.html" title="cpu.h" alt="" coords="580,229,635,256"/>
+<area shape="rect" id="node19" href="$corescheduler_8h.html" title="corescheduler.h" alt="" coords="698,304,813,331"/>
+<area shape="rect" id="node21" href="$cloudtask_8h.html" title="cloudtask.h" alt="" coords="1192,453,1281,480"/>
+<area shape="rect" id="node25" href="$nic_8h.html" title="nic.h" alt="" coords="421,379,471,405"/>
+<area shape="rect" id="node28" href="$provideroutagent_8h.html" title="provideroutagent.h" alt="" coords="955,229,1081,256"/>
+<area shape="rect" id="node30" href="$vmmigrationsink_8h.html" title="vmmigrationsink.h" alt="" coords="1645,229,1772,256"/>
+<area shape="rect" id="node33" href="$tskagent_8h.html" title="tskagent.h" alt="" coords="1323,229,1406,256"/>
+<area shape="rect" id="node36" href="$taskinfo_8h.html" title="taskinfo.h" alt="" coords="1105,229,1184,256"/>
+<area shape="rect" id="node15" href="$resourcespec_8h.html" title="resourcespec.h" alt="" coords="297,677,408,704"/>
+<area shape="rect" id="node16" href="$powermodel_8h.html" title="powermodel/powermodel.h" alt="" coords="136,752,311,779"/>
+<area shape="rect" id="node20" href="$taskalloc_8h.html" title="taskalloc.h" alt="" coords="1063,379,1149,405"/>
+<area shape="rect" id="node23" href="$resdemand_8h.html" title="resdemand.h" alt="" coords="893,677,991,704"/>
+<area shape="rect" id="node32" href="$bytecounter_8h.html" title="bytecounter.h" alt="" coords="1674,453,1775,480"/>
+</map>

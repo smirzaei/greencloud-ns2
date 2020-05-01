@@ -1,0 +1,832 @@
+diff -ruN ./classifier/classifier.cc /home/greencloud/greencloud/src/scripts/../ns2-patching/classifier/classifier.cc
+--- ./classifier/classifier.cc	2010-03-08 06:54:49.000000000 +0100
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/classifier/classifier.cc	2014-10-29 22:23:45.353830118 +0100
+@@ -52,7 +52,7 @@
+ 
+ 
+ Classifier::Classifier() : 
+-	slot_(0), nslot_(0), maxslot_(-1), shift_(0), mask_(0xffffffff), nsize_(0)
++	slot_(0), nslot_(0), maxslot_(-1), shift_(0), mask_(0xffffffff), nsize_(0), energyModel_(NULL)
+ {
+ 	default_target_ = 0;
+ 
+@@ -179,6 +179,7 @@
+ 				return (NULL);
+ 		}
+ 	}
++	if (energyModel_) energyModel_->updateEnergy(cl, maxslot());
+ 	return (node);
+ }
+ 
+@@ -275,6 +276,13 @@
+ 				return TCL_ERROR;
+ 			return TCL_OK;
+ 		}
++		if (strcmp(argv[1], "attach-energymodel") == 0) {
++			SwitchEnergyModel *energyModel = (SwitchEnergyModel*)TclObject::lookup(argv[2]);
++			if (energyModel == NULL) return TCL_ERROR;
++			energyModel_ = energyModel;
++			energyModel_->setClassifier(this);
++			return TCL_OK;
++		}
+ 	} else if (argc == 4) {
+ 		/*
+ 		 * $classifier install $slot $node
+diff -ruN ./classifier/classifier.h /home/greencloud/greencloud/src/scripts/../ns2-patching/classifier/classifier.h
+--- ./classifier/classifier.h	2010-03-08 06:54:49.000000000 +0100
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/classifier/classifier.h	2014-10-29 22:23:45.353830118 +0100
+@@ -38,8 +38,10 @@
+ #define ns_classifier_h
+ 
+ #include "object.h"
++#include "switchenergymodel.h"
+ 
+ class Packet;
++class SwitchEnergyModel;
+ 
+ class Classifier : public NsObject {
+ public:
+@@ -74,7 +76,8 @@
+ 	// hierarchical specific
+ 	virtual void set_table_size(int level, int nn);
+ 
+-	int allocPort (NsObject *);	
++	int allocPort (NsObject *);
++	
+ protected:
+ 	virtual int getnxt(NsObject *);
+ 	virtual int command(int argc, const char*const* argv);
+@@ -87,6 +90,8 @@
+ 	int mask_;
+ 	NsObject *default_target_;
+ 	int nsize_;       //what size of nslot_ should be
++	
++	SwitchEnergyModel *energyModel_;
+ };
+ 
+ #endif
+diff -ruN ./common/packet.h /home/greencloud/greencloud/src/scripts/../ns2-patching/common/packet.h
+--- ./common/packet.h	2010-05-10 00:28:41.000000000 +0200
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/common/packet.h	2014-10-29 22:23:45.361834016 +0100
+@@ -195,12 +195,13 @@
+ static const packet_t PT_DCCP_CLOSE  = 69;
+ static const packet_t PT_DCCP_CLOSEREQ = 70;
+ static const packet_t PT_DCCP_RESET = 71;
+-
++static const packet_t PT_CLOUD_USER = 72;
+         // M-DART packets
+-static const packet_t PT_MDART = 72;
++static const packet_t PT_MDART = 73;
++
+ 	
+         // insert new packet types here
+-static packet_t       PT_NTYPE = 73; // This MUST be the LAST one
++static packet_t       PT_NTYPE = 74; // This MUST be the LAST one
+ 
+ enum packetClass
+ {
+@@ -337,6 +338,7 @@
+ 		name_[PT_FTP]= "ftp";
+ 		name_[PT_PARETO]= "pareto";
+ 		name_[PT_EXP]= "exp";
++		name_[PT_CLOUD_USER]="clouduser";
+ 		name_[PT_INVAL]= "httpInval";
+ 		name_[PT_HTTP]= "http";
+ 		name_[PT_ENCAPSULATED]= "encap";
+@@ -611,6 +613,8 @@
+         char src_rt_valid;
+ 	double ts_arr_; // Required by Marker of JOBS 
+ 
++	void * pt_obj_addr_; //ADDED Pointer to the taskObject 
++
+ 	//Monarch extn begins
+ 	nsaddr_t prev_hop_;     // IP addr of forwarding hop
+ 	nsaddr_t next_hop_;	// next hop for this packet
+@@ -652,6 +656,9 @@
+         /* per-field member functions */
+ 	inline packet_t& ptype() { return (ptype_); }
+ 	inline int& size() { return (size_); }
++
++	inline void* & pt_obj_addr() { return (pt_obj_addr_); }	
++
+ 	inline int& uid() { return (uid_); }
+ 	inline int& error() { return error_; }
+ 	inline int& errbitcnt() {return errbitcnt_; }
+diff -ruN ./common/tclAppInit.cc /home/greencloud/greencloud/src/scripts/../ns2-patching/common/tclAppInit.cc
+--- ./common/tclAppInit.cc	2008-02-18 04:39:02.000000000 +0100
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/common/tclAppInit.cc	2014-10-29 22:23:45.365835966 +0100
+@@ -15,6 +15,7 @@
+  */
+ 
+ #include "config.h"
++#include "tcl.h"
+ 
+ extern void init_misc(void);
+ extern EmbeddedTcl et_ns_lib;
+diff -ruN ./linkstate/ls.h /home/greencloud/greencloud/src/scripts/../ns2-patching/linkstate/ls.h
+--- ./linkstate/ls.h	2010-03-08 06:54:51.000000000 +0100
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/linkstate/ls.h	2014-10-29 22:23:45.537919804 +0100
+@@ -134,7 +134,7 @@
+ 		return ib.second ? ib.first : baseMap::end();
+ 	}
+ 
+-	void eraseAll() { erase(baseMap::begin(), baseMap::end()); }
++	void eraseAll() { this->erase(baseMap::begin(), baseMap::end()); }
+ 	T* findPtr(Key key) {
+ 		iterator it = baseMap::find(key);
+ 		return (it == baseMap::end()) ? (T *)NULL : &((*it).second);
+diff -ruN ./Makefile.in /home/greencloud/greencloud/src/scripts/../ns2-patching/Makefile.in
+--- ./Makefile.in	2011-10-23 18:29:54.000000000 +0200
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/Makefile.in	2014-10-29 22:24:26.876030039 +0100
+@@ -53,13 +53,14 @@
+ # for diffusion
+ #DIFF_INCLUDES = "./diffusion3/main ./diffusion3/lib ./diffusion3/nr ./diffusion3/ns"
+ 
+-CCOPT	= @V_CCOPT@ 
++CCOPT	= @V_CCOPT@ -g
+ STATIC	= @V_STATIC@
+ #LDFLAGS	= $(STATIC)
+ LDFLAGS	= @LDFLAGS@ 
+ LDOUT	= -o $(BLANK)
+ 
+-DEFINE	= -DTCP_DELAY_BIND_ALL -DNO_TK @V_DEFINE@ @V_DEFINES@ @DEFS@ -DNS_DIFFUSION -DSMAC_NO_SYNC -DCPP_NAMESPACE=@CPP_NAMESPACE@ -DUSE_SINGLE_ADDRESS_SPACE -Drng_test
++
++DEFINE	= -DTCP_DELAY_BIND_ALL -DNO_TK @V_DEFINE@ @V_DEFINES@ @DEFS@ -DNS_DIFFUSION -DSMAC_NO_SYNC -DCPP_NAMESPACE=@CPP_NAMESPACE@ -DUSE_SINGLE_ADDRESS_SPACE -Drng_test -DNDEBUG -DDEBUG
+ 
+ INCLUDES = \
+ 	-I. @V_INCLUDE_X11@ \
+@@ -72,8 +73,10 @@
+ 	-I./diffusion3/lib/nr -I./diffusion3/ns \
+ 	-I./diffusion3/filter_core -I./asim/ -I./qs \
+ 	-I./diffserv -I./satellite \
+-	-I./wpan
+-
++	-I./wpan \
++	-I./webcache \
++	-I./greencloud
++# ./greencloud is a softlink to the GreenCloud custom code to be added to NS2
+ 
+ LIB	= \
+ 	@V_LIBS@ \
+@@ -180,6 +183,48 @@
+ 	apps/app.o apps/telnet.o tcp/tcplib-telnet.o \
+ 	tools/trafgen.o trace/traffictrace.o tools/pareto.o \
+ 	tools/expoo.o tools/cbr_traffic.o \
++	greencloud/resource.o \
++	greencloud/resdemand.o \
++	greencloud/resourceconsumer.o \
++	greencloud/resourceprovider.o \
++	greencloud/clouduser.o \
++	greencloud/expclouduser.o \
++	greencloud/cbrclouduser.o \
++	greencloud/paretoclouduser.o \
++	greencloud/datacenter.o \
++	greencloud/tskagent.o \
++	greencloud/dchost.o \
++	greencloud/dcrack.o \
++	greencloud/cloudtask.o \
++	greencloud/tskcomsink.o \
++	greencloud/switchenergymodel.o \
++	greencloud/resourcespec.o \
++	greencloud/dcresource.o \
++	greencloud/cpu.o \
++	greencloud/nic.o \
++	greencloud/corescheduler.o \
++	greencloud/taskalloc.o \
++	greencloud/vm.o \
++	greencloud/provideroutagent.o \
++	greencloud/vmmigrationsink.o \
++	greencloud/vmmigration.o \
++	greencloud/bytecounter.o \
++	greencloud/tskoutsink.o \
++    greencloud/taskinfo.o \
++	greencloud/dcscheduler/providerscore.o \
++	greencloud/dcscheduler/dcscheduler.o \
++	greencloud/dcscheduler/randdens.o \
++	greencloud/dcscheduler/bestdens.o \
++	greencloud/dcscheduler/greenscheduler.o \
++	greencloud/dcscheduler/roundrobinscheduler.o \
++	greencloud/dcscheduler/probabilisticscheduler.o \
++	greencloud/dcscheduler/randomscheduler.o \
++	greencloud/dcscheduler/herosscheduler.o \
++	greencloud/dcscheduler/scorescheduler.o \
++	greencloud/dcscheduler/bestscorescheduler.o \
++	greencloud/powermodel/powermodel.o \
++	greencloud/powermodel/linearpmodel.o \
++	greencloud/powermodel/percomponentmodel.o \
+ 	adc/tbf.o adc/resv.o adc/sa.o tcp/saack.o \
+ 	tools/measuremod.o adc/estimator.o adc/adc.o adc/ms-adc.o \
+ 	adc/timewindow-est.o adc/acto-adc.o \
+diff -ruN ./makefile.vc /home/greencloud/greencloud/src/scripts/../ns2-patching/makefile.vc
+--- ./makefile.vc	2010-05-10 00:28:41.000000000 +0200
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/makefile.vc	2014-10-29 22:23:45.325816470 +0100
+@@ -159,6 +159,13 @@
+ !include <conf/makefile.win>
+ 
+ OBJ_CC = \
++	tools/tskgen.o \
++	apps/datacenter.o \
++	apps/tskagent.o \
++	apps/clouduser.o \
++	apps/cloudtask.o \
++	tools/dchost.o \
++	tools/tskcomsink.o \
+ 	tools/random.o tools/rng.o tools/ranvar.o common/misc.o common/timer-handler.o \
+ 	common/scheduler.o common/object.o common/packet.o \
+ 	common/ip.o routing/route.o common/connector.o common/ttl.o \
+diff -ruN ./mobile/god.cc /home/greencloud/greencloud/src/scripts/../ns2-patching/mobile/god.cc
+--- ./mobile/god.cc	2006-12-27 15:57:23.000000000 +0100
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/mobile/god.cc	2014-10-29 22:23:45.561931504 +0100
+@@ -474,9 +474,9 @@
+     return false;
+   }
+ 
+-  vector a(mb_node[i]->X(), mb_node[i]->Y(), mb_node[i]->Z());
+-  vector b(mb_node[j]->X(), mb_node[j]->Y(), mb_node[j]->Z());
+-  vector d = a - b;
++  Vector a(mb_node[i]->X(), mb_node[i]->Y(), mb_node[i]->Z());
++  Vector b(mb_node[j]->X(), mb_node[j]->Y(), mb_node[j]->Z());
++  Vector d = a - b;
+ 
+   if (d.length() < RANGE)
+     return true;
+diff -ruN ./mobile/god.h /home/greencloud/greencloud/src/scripts/../ns2-patching/mobile/god.h
+--- ./mobile/god.h	2006-02-21 16:20:19.000000000 +0100
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/mobile/god.h	2014-10-29 22:23:45.561931504 +0100
+@@ -76,39 +76,39 @@
+ 
+ // Cut and Paste from setdest.h   -- Chalermek 12/1/99
+ 
+-class vector {
++class Vector {
+ public:
+-	vector(double x = 0.0, double y = 0.0, double z = 0.0) {
++	Vector(double x = 0.0, double y = 0.0, double z = 0.0) {
+ 		X = x; Y = y; Z = z;
+ 	}
+ 	double length() {
+ 		return sqrt(X*X + Y*Y + Z*Z);
+ 	}
+ 
+-	inline void operator=(const vector a) {
++	inline void operator=(const Vector a) {
+ 		X = a.X;
+ 		Y = a.Y;
+ 		Z = a.Z;
+ 	}
+-	inline void operator+=(const vector a) {
++	inline void operator+=(const Vector a) {
+ 		X += a.X;
+ 		Y += a.Y;
+ 		Z += a.Z;
+ 	}
+-	inline int operator==(const vector a) {
++	inline int operator==(const Vector a) {
+ 		return (X == a.X && Y == a.Y && Z == a.Z);
+ 	}
+-	inline int operator!=(const vector a) {
++	inline int operator!=(const Vector a) {
+ 		return (X != a.X || Y != a.Y || Z != a.Z);
+ 	}
+-	inline vector operator-(const vector a) {
+-		return vector(X-a.X, Y-a.Y, Z-a.Z);
++	inline Vector operator-(const Vector a) {
++		return Vector(X-a.X, Y-a.Y, Z-a.Z);
+ 	}
+-	friend inline vector operator*(const double a, const vector b) {
+-		return vector(a*b.X, a*b.Y, a*b.Z);
++	friend inline Vector operator*(const double a, const Vector b) {
++		return Vector(a*b.X, a*b.Y, a*b.Z);
+ 	}
+-	friend inline vector operator/(const vector a, const double b) {
+-		return vector(a.X/b, a.Y/b, a.Z/b);
++	friend inline Vector operator/(const Vector a, const double b) {
++		return Vector(a.X/b, a.Y/b, a.Z/b);
+ 	}
+ 
+ 	double X;
+diff -ruN ./tcl/lib/ns-default.tcl /home/greencloud/greencloud/src/scripts/../ns2-patching/tcl/lib/ns-default.tcl
+--- ./tcl/lib/ns-default.tcl	2010-07-04 00:45:45.000000000 +0200
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/tcl/lib/ns-default.tcl	2014-10-29 22:23:45.762028989 +0100
+@@ -294,6 +294,7 @@
+ QueueMonitor set barrivals_ 0
+ QueueMonitor set pdepartures_ 0
+ QueueMonitor set bdepartures_ 0
++QueueMonitor set bdepartures_tot_ 0
+ QueueMonitor set pdrops_ 0
+ QueueMonitor set pmarks_ 0
+ QueueMonitor set bdrops_ 0
+@@ -369,8 +370,6 @@
+ Filter/Field set offset_ 0
+ Filter/Field set match_  -1
+ 
+-
+-
+ # these are assigned when created
+ Classifier set offset_ 0
+ Classifier set shift_ 0
+@@ -470,7 +469,80 @@
+ Application/Traffic/Exponential set burst_time_ .5
+ Application/Traffic/Exponential set idle_time_ .5
+ Application/Traffic/Exponential set rate_ 64Kb
+-Application/Traffic/Exponential set packetSize_ 210
++Application/Traffic/Exponential set packetSize_ 500
++
++#DataCenter
++DataCenter set tskSubmitted_ 0
++DataCenter set avgLoad_ 0
++DataCenter set avgLoadMem_ 0
++DataCenter set avgLoadStor_ 0
++DataCenter set avgPower_ 0
++DataCenter set tskFailed_ 0
++
++#DcHost
++DcHost set id_ 0
++DcHost set ntasks_ 0
++DcHost set nominal_mips_ 10000
++DcHost set current_load_mips_ 0
++DcHost set eConsumed_ 0.0
++DcHost set eNominalrate_ 130.0
++DcHost set eCurrentConsumption_ 0.0
++DcHost set currentLoad_ 0.0
++DcHost set currentLoadMem_ 0.0
++DcHost set currentLoadStor_ 0.0
++DcHost set eDVFS_enabled_ 0
++DcHost set eDNS_enabled_ 0
++DcHost set tskFailed_ 0
++
++#DcRack
++DcRack set rack_id_ 0
++DcRack set breceived_ 0
++DcRack set stat_interval 0
++DcRack set uplink_B 0
++
++#ResourceSpec
++
++#VM
++VM set id_ 0
++VM set ntasks_ 0
++VM set nominal_mips_ 10000
++VM set current_load_mips_ 0
++VM set currentLoad_ 0.0
++VM set currentLoadMem_ 0.0
++VM set currentLoadStor_ 0.0
++VM set tskFailed_ 0
++VM set eDVFS_enabled_ 0
++
++#SwitchEnergyModel
++SwitchEnergyModel set eConsumed_ 0.0
++SwitchEnergyModel set eChassis_ 54
++SwitchEnergyModel set eLineCard_ 39
++SwitchEnergyModel set ePort_ 0.9
++SwitchEnergyModel set eSimEnd_ 0.0
++SwitchEnergyModel set eDNS_enabled_ 0
++SwitchEnergyModel set eDVFS_enabled_ 0
++SwitchEnergyModel set eDNS_delay_ 0.1ms
++
++#Task Generator setup
++Application/Traffic/ExpCloudUser set id_ 0
++Application/Traffic/ExpCloudUser set mean_response_time_ -1
++Application/Traffic/ExpCloudUser set sd_response_time_ -1
++Application/Traffic/ExpCloudUser set unfinished_tasks_ -1
++Application/Traffic/ExpCloudUser set burst_time_ .5
++Application/Traffic/ExpCloudUser set idle_time_ .5
++Application/Traffic/ExpCloudUser set rate_ 64Kb
++Application/Traffic/ExpCloudUser set packetSize_ 1460
++Application/Traffic/ExpCloudUser set mips_ 1000
++Application/Traffic/ExpCloudUser set storage_ 1000
++Application/Traffic/ExpCloudUser set memory_ 1000
++Application/Traffic/ExpCloudUser set tsksize_ 0.1
++Application/Traffic/ExpCloudUser set tskmips_ 1000
++Application/Traffic/ExpCloudUser set tsksize_ 0.1
++Application/Traffic/ExpCloudUser set tskmaxduration_ 0.0
++Application/Traffic/ExpCloudUser set toutputsize_ 0
++Application/Traffic/ExpCloudUser set tintercom_ 0
++Application/Traffic/ExpCloudUser set random_tskmips_ 1.0
++
+ 
+ Application/Traffic/Pareto set burst_time_ 500ms
+ Application/Traffic/Pareto set idle_time_ 500ms
+@@ -487,8 +559,24 @@
+ Application/Traffic/RealAudio set interpolation_ 0
+ Application/Traffic/RealAudio set maxEntry_ 32
+ 
+-Application/Traffic/CBR set rate_ 448Kb	;# corresponds to interval of 3.75ms
+-Application/Traffic/CBR set packetSize_ 210
++Application/Traffic/CBRCloudUser set id_ 0
++Application/Traffic/CBRCloudUser set mean_response_time_ -1
++Application/Traffic/CBRCloudUser set sd_response_time_ -1
++Application/Traffic/CBRCloudUser set unfinished_tasks_ -1
++Application/Traffic/CBRCloudUser set rate_ 1Mb	;# corresponds to interval of 3.75ms
++Application/Traffic/CBRCloudUser set packetSize_ 1460
++Application/Traffic/CBRCloudUser set random_ 0
++Application/Traffic/CBRCloudUser set maxpkts_ 268435456; # 0x10000000
++Application/Traffic/CBRCloudUser set mips_ 1000
++Application/Traffic/CBRCloudUser set tsksize_ 0.1
++Application/Traffic/CBRCloudUser set tskmips_ 1000
++Application/Traffic/CBRCloudUser set tsksize_ 0.1
++Application/Traffic/CBRCloudUser set tskmaxduration_ 0.1
++Application/Traffic/CBRCloudUser set random_tskmips_ 1.0
++
++
++Application/Traffic/CBR set rate_ 1000Kb	;# corresponds to interval of 3.75ms
++Application/Traffic/CBR set packetSize_ 500
+ Application/Traffic/CBR set random_ 0
+ Application/Traffic/CBR set maxpkts_ 268435456; # 0x10000000
+ 
+@@ -829,10 +917,12 @@
+ 
+ Agent/Ping set packetSize_ 64
+ 
+-Agent/UDP set packetSize_ 1000
++Agent/UDP set packetSize_ 1460
+ Agent/UDP instproc done {} { }
+ Agent/UDP instproc process_data {from data} { }
+ 
++Agent/TskComAgent set packetSize_ 1000
++
+ Agent/SCTP set debugMask_ 0             ;# all debugging off by default
+ Agent/SCTP set debugFileIndex_ -1       ;# default outputs to stderr
+ Agent/SCTP set associationMaxRetrans_ 10;# 10 attempts
+@@ -933,7 +1023,7 @@
+ Agent/TCP set ecn_ 0
+ Agent/TCP set old_ecn_ 0
+ Agent/TCP set bugfix_ss_ 1 ;		# Variable added on 2006/06/13
+-Agent/TCP set packetSize_ 1000
++Agent/TCP set packetSize_ 1460
+ Agent/TCP set tcpip_base_hdr_size_ 40
+ Agent/TCP set ts_option_size_ 10; 	# in bytes
+ Agent/TCP set bugFix_ true
+@@ -1318,6 +1408,12 @@
+ Agent/LossMonitor set lastPktTime_ 0
+ Agent/LossMonitor set expected_ 0
+ 
++Agent/TskComSink set nlost_ 0
++Agent/TskComSink set npkts_ 0
++Agent/TskComSink set bytes_ 0
++Agent/TskComSink set lastPktTime_ 0
++Agent/TskComSink set expected_ 0
++
+ # RAP
+ Agent/RAP set packetSize_ 512
+ Agent/RAP set seqno_ 0
+diff -ruN ./tcl/mobility/scene/scen-1500x300-60-0-20-2 /home/greencloud/greencloud/src/scripts/../ns2-patching/tcl/mobility/scene/scen-1500x300-60-0-20-2
+--- ./tcl/mobility/scene/scen-1500x300-60-0-20-2	2001-02-07 07:42:38.000000000 +0100
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/tcl/mobility/scene/scen-1500x300-60-0-20-2	2014-10-29 22:23:45.846069932 +0100
+@@ -48408,7 +48408,7 @@
+ $ns_ at 441.636327668353 "$god_ set-dist 17 32 5"
+ $ns_ at 441.636327668353 "$god_ set-dist 17 51 6"
+ $ns_ at 441.636327668353 "$god_ set-dist 18 32 3"
+-$ns_ at 441.636327668353 "$god_ set-dist 18 51 4"
++$ns_ at 441.636327668353 "$god_ sed-dist 18 51 4"
+ $ns_ at 441.636327668353 "$god_ set-dist 25 32 4"
+ $ns_ at 441.636327668353 "$god_ set-dist 25 51 5"
+ $ns_ at 441.636327668353 "$god_ set-dist 26 32 4"
+diff -ruN ./tcp/tcp.cc /home/greencloud/greencloud/src/scripts/../ns2-patching/tcp/tcp.cc
+--- ./tcp/tcp.cc	2011-06-20 06:51:46.000000000 +0200
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/tcp/tcp.cc	2014-10-29 22:23:45.000000000 +0100
+@@ -67,6 +67,7 @@
+ 
+ TcpAgent::TcpAgent() 
+ 	: Agent(PT_TCP), 
++	  current_pointer_(NULL),
+ 	  t_seqno_(0), dupacks_(0), curseq_(0), highest_ack_(0), 
+           cwnd_(0), ssthresh_(0), maxseq_(0), count_(0), 
+           rtt_active_(0), rtt_seq_(-1), rtt_ts_(0.0), 
+@@ -794,6 +795,157 @@
+ 		set_rtx_timer();
+ }
+ 
++void TcpAgent::output_pointer(int seqno, int reason, void* pointer)
++{
++	int force_set_rtx_timer = 0;
++	Packet* p = allocpkt();
++	hdr_cmn::access(p)->pt_obj_addr() = pointer;
++	hdr_tcp *tcph = hdr_tcp::access(p);
++	hdr_flags* hf = hdr_flags::access(p);
++	hdr_ip *iph = hdr_ip::access(p);
++	int databytes = hdr_cmn::access(p)->size();
++	tcph->seqno() = seqno;
++	tcph->ts() = Scheduler::instance().clock();
++	int is_retransmit = (seqno < maxseq_);
++
++	// Mark packet for diagnosis purposes if we are in Quick-Start Phase
++	if (qs_approved_) {
++		hf->qs() = 1;
++	}
++
++        // store timestamps, with bugfix_ts_.  From Andrei Gurtov.
++	// (A real TCP would use scoreboard for this.)
++        if (bugfix_ts_ && tss==NULL) {
++                tss = (double*) calloc(tss_size_, sizeof(double));
++                if (tss==NULL) exit(1);
++        }
++        //dynamically grow the timestamp array if it's getting full
++        if (bugfix_ts_ && ((seqno - highest_ack_) > tss_size_* 0.9)) {
++                double *ntss;
++                ntss = (double*) calloc(tss_size_*2, sizeof(double));
++                printf("%p resizing timestamp table\n", this);
++                if (ntss == NULL) exit(1);
++                for (int i=0; i<tss_size_; i++)
++                        ntss[(highest_ack_ + i) % (tss_size_ * 2)] =
++                                tss[(highest_ack_ + i) % tss_size_];
++                free(tss);
++                tss_size_ *= 2;
++                tss = ntss;
++        }
++
++        if (tss!=NULL)
++                tss[seqno % tss_size_] = tcph->ts();
++
++	tcph->ts_echo() = ts_peer_;
++	tcph->reason() = reason;
++	tcph->last_rtt() = int(int(t_rtt_)*tcp_tick_*1000);
++
++	if (ecn_) {
++		hf->ect() = 1;	// ECN-capable transport
++	}
++	if (cong_action_ && (!is_retransmit || SetCWRonRetransmit_)) {
++		hf->cong_action() = TRUE;  // Congestion action.
++		cong_action_ = FALSE;
++        }
++	/* Check if this is the initial SYN packet. */
++	if (seqno == 0) {
++		if (syn_) {
++			databytes = 0;
++			if (maxseq_ == -1) {
++				curseq_ += 1; /*increment only on initial SYN*/
++			}
++			hdr_cmn::access(p)->size() = tcpip_base_hdr_size_;
++			++syn_connects_;
++			//fprintf(stderr, "TCPAgent: syn_connects_ %d max_connects_ %d\n",
++			//	syn_connects_, max_connects_);
++			if (max_connects_ > 0 &&
++                               syn_connects_ > max_connects_) {
++			      // Abort the connection.
++			      // What is the best way to abort the connection?
++			      curseq_ = 0;
++	                      rtx_timer_.resched(10000);
++                              return;
++                        }
++		}
++		if (ecn_) {
++			hf->ecnecho() = 1;
++//			hf->cong_action() = 1;
++			hf->ect() = 0;
++		}
++		if (qs_enabled_) {
++			hdr_qs *qsh = hdr_qs::access(p);
++
++			// dataout is kilobytes queued for sending
++			int dataout = (curseq_ - maxseq_ - 1) * (size_ + headersize()) / 1024;
++			int qs_rr = rate_request_;
++			if (qs_request_mode_ == 1 && qs_rtt_ > 0) {
++				// PS: Avoid making unnecessary QS requests
++				// use a rough estimation of RTT in qs_rtt_
++				// to calculate the desired rate from dataout.
++				// printf("dataout %d qs_rr %d qs_rtt_ %d\n",
++				//	dataout, qs_rr, qs_rtt_);
++				if (dataout * 1000 / qs_rtt_ < qs_rr) {
++					qs_rr = dataout * 1000 / qs_rtt_;
++				}
++				// printf("request %d\n", qs_rr);
++				// qs_thresh_ is minimum number of unsent
++				// segments needed to activate QS request
++				// printf("curseq_ %d maxseq_ %d qs_thresh_ %d\n",
++				//	 int(curseq_), int(maxseq_), qs_thresh_);
++				if ((curseq_ - maxseq_ - 1) < qs_thresh_) {
++					qs_rr = 0;
++				}
++			}
++
++		    	if (qs_rr > 0) {
++				if (print_request_)
++					printf("QS request (before encoding): %d KBps\n", qs_rr);
++				// QuickStart code from Srikanth Sundarrajan.
++				qsh->flag() = QS_REQUEST;
++				qsh->ttl() = Random::integer(256);
++				ttl_diff_ = (iph->ttl() - qsh->ttl()) % 256;
++				qsh->rate() = hdr_qs::Bps_to_rate(qs_rr * 1024);
++				qs_requested_ = 1;
++		    	} else {
++				qsh->flag() = QS_DISABLE;
++			}
++		}
++	}
++	else if (useHeaders_ == true) {
++		hdr_cmn::access(p)->size() += headersize();
++	}
++        hdr_cmn::access(p)->size();
++
++	/* if no outstanding data, be sure to set rtx timer again */
++	if (highest_ack_ == maxseq_)
++		force_set_rtx_timer = 1;
++	/* call helper function to fill in additional fields */
++	output_helper(p);
++
++        ++ndatapack_;
++        ndatabytes_ += databytes;
++	send(p, 0);
++	if (seqno == curseq_ && seqno > maxseq_)
++		idle();  // Tell application I have sent everything so far
++	if (seqno > maxseq_) {
++		maxseq_ = seqno;
++		if (!rtt_active_) {
++			rtt_active_ = 1;
++			if (seqno > rtt_seq_) {
++				rtt_seq_ = seqno;
++				rtt_ts_ = Scheduler::instance().clock();
++			}
++
++		}
++	} else {
++        	++nrexmitpack_;
++		nrexmitbytes_ += databytes;
++	}
++	if (!(rtx_timer_.status() == TIMER_PENDING) || force_set_rtx_timer)
++		/* No timer pending.  Schedule one. */
++		set_rtx_timer();
++}
++
+ /*
+  * Must convert bytes into packets for one-way TCPs.
+  * If nbytes == -1, this corresponds to infinite send.  We approximate
+@@ -808,6 +960,16 @@
+ 	send_much(0, 0, maxburst_);
+ }
+ 
++void TcpAgent::sendmsg(int nbytes, void* pointer, const char* /*flags*/)
++{
++	current_pointer_ = pointer;
++	if (nbytes == -1 && curseq_ <= TCP_MAXSEQ)
++		curseq_ = TCP_MAXSEQ;
++	else
++		curseq_ += (nbytes/size_ + (nbytes%size_ ? 1 : 0));
++	send_much(0, 0, maxburst_);
++}
++
+ void TcpAgent::advanceby(int delta)
+ {
+   curseq_ += delta;
+@@ -926,7 +1088,13 @@
+ 		return;
+ 	while (t_seqno_ <= highest_ack_ + win && t_seqno_ < curseq_) {
+ 		if (overhead_ == 0 || force || qs_approved_) {
+-			output(t_seqno_, reason);
++                      if(t_seqno_ == curseq_-1){
++                              /*Greencloud modifications:*/
++                              output_pointer(t_seqno_, reason, current_pointer_);
++                              current_pointer_=NULL;
++                      } else {
++                              output(t_seqno_, reason);
++                      }
+ 			npackets++;
+ 			if (QOption_)
+ 				process_qoption_after_send () ; 
+@@ -2204,3 +2372,12 @@
+ 			);
+ 	et_->trace();
+ }
++
++/*Green Cloud addition for tracking the utilization of a link:*/
++int TcpAgent::getNdatabytes(){
++	return ndatabytes_;
++}
++/*Green Cloud addition:*/
++int TcpAgent::getPacketSize(){
++	return size_;
++}
+diff -ruN ./tcp/tcp.h /home/greencloud/greencloud/src/scripts/../ns2-patching/tcp/tcp.h
+--- ./tcp/tcp.h	2011-08-26 21:29:57.000000000 +0200
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/tcp/tcp.h	2014-10-29 22:23:45.000000000 +0100
+@@ -54,6 +54,17 @@
+ 	int hlen_;              /* header len (bytes) for FullTcp */
+ 	int tcp_flags_;         /* TCP flags for FullTcp */
+ 	int last_rtt_;		/* more recent RTT measurement in ms, */
++
++	/* mptcp */
++    int mp_capable_;
++    int mp_join_;
++    int mp_addr_;
++    int mp_remove_;
++    int mp_dsn_;
++    int mp_subseq_;
++    int mp_dsnlen_;
++    int mp_ack_;
++
+ 				/*   for statistics only */
+ 
+ 	static int offset_;	// offset for this header
+@@ -74,6 +85,16 @@
+ 	int& ackno() { return (ackno_); }  
+ 	int& flags() { return (tcp_flags_); }
+ 	int& last_rtt() { return (last_rtt_); }
++
++    /* mptcp */
++    int& mp_capable() { return (mp_capable_); }
++    int& mp_join() { return (mp_join_); }
++    int& mp_addr() { return (mp_addr_); }
++    int& mp_remove() { return (mp_remove_); }
++    int& mp_dsn() { return (mp_dsn_); }
++    int& mp_subseq() { return (mp_subseq_); }
++    int& mp_dsnlen() { return (mp_dsnlen_); }
++    int& mp_ack() { return (mp_ack_); }
+ };
+ 
+ /* these are used to mark packets as to why we xmitted them */
+@@ -181,16 +202,14 @@
+ 	virtual void timeout_nonrtx(int tno);
+ 	int command(int argc, const char*const* argv);
+ 	virtual void sendmsg(int nbytes, const char *flags = 0);
+-
++	virtual void sendmsg(int nbytes, void* pointer, const char *flags = 0); // GreenCloud addition
++	void reset();
+ 	void trace(TracedVar* v);
+ 	virtual void advanceby(int delta);
+-
+-	virtual void reset();
+-
+-	/* These two functions aid Tmix one-way TCP agents */
+-	int is_closed() {return closed_;} 
+-	void clr_closed() {closed_ = 0;}
++	int getNdatabytes(); // GreenCloud addition
++	int getPacketSize(); // GreenCloud addition
+ protected:
++	void * current_pointer_; // GreenCloud addition
+ 	virtual int window();
+ 	virtual double windowd();
+ 	void print_if_needed(double memb_time);
+@@ -222,6 +241,7 @@
+ 
+ 	/* connection and packet dynamics */
+ 	virtual void output(int seqno, int reason = 0);
++	virtual void output_pointer(int seqno, int reason = 0, void* pointer=NULL); // GreenCloud addition
+ 	virtual void send_much(int force, int reason, int maxburst = 0);
+ 	virtual void newtimer(Packet*);
+ 	virtual void dupack_action();		/* do this on dupacks */
+diff -ruN ./tools/queue-monitor.cc /home/greencloud/greencloud/src/scripts/../ns2-patching/tools/queue-monitor.cc
+--- ./tools/queue-monitor.cc	2004-10-28 03:21:41.000000000 +0200
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/tools/queue-monitor.cc	2014-10-29 22:23:45.000000000 +0100
+@@ -272,6 +272,7 @@
+ 	size_ -= pktsz;
+ 	pkts_--;
+ 	bdepartures_ += pktsz;
++	bdepartures_tot_ += pktsz;
+ 	pdepartures_++;
+ 	if (bytesInt_)
+ 		bytesInt_->newPoint(now, double(size_));
+diff -ruN ./tools/queue-monitor.h /home/greencloud/greencloud/src/scripts/../ns2-patching/tools/queue-monitor.h
+--- ./tools/queue-monitor.h	2005-07-13 05:51:33.000000000 +0200
++++ /home/greencloud/greencloud/src/scripts/../ns2-patching/tools/queue-monitor.h	2014-10-29 22:23:45.000000000 +0100
+@@ -48,7 +48,7 @@
+ 	QueueMonitor() : bytesInt_(NULL), pktsInt_(NULL), delaySamp_(NULL),
+ 		size_(0), pkts_(0),
+ 		parrivals_(0), barrivals_(0),
+-		pdepartures_(0), bdepartures_(0),
++		pdepartures_(0), bdepartures_(0), bdepartures_tot_(0),
+ 		pdrops_(0), pmarks_(0), bdrops_(0), 
+ 			 qs_pkts_(0), qs_bytes_(0), qs_drops_(0),
+ 		keepRTTstats_(0), maxRTT_(1), numRTTs_(0), binsPerSec_(10),
+@@ -66,6 +66,7 @@
+ 		bind("barrivals_", &barrivals_);
+ 		bind("pdepartures_", &pdepartures_);
+ 		bind("bdepartures_", &bdepartures_);
++		bind("bdepartures_tot_", &bdepartures_tot_);
+ 		bind("pdrops_", &pdrops_);
+ 		bind("pmarks_", &pmarks_);
+ 		bind("bdrops_", &bdrops_);
+@@ -105,16 +106,20 @@
+ 	int64_t barrivals() const { return (barrivals_); }
+ 	int64_t pdepartures() const { return (pdepartures_); }
+ 	int64_t bdepartures() const { return (bdepartures_); }
++	int64_t bdepartures_tot() const { return (bdepartures_tot_); }
+ #else /* no 64-bit integer */
+ 	int parrivals() const { return (parrivals_); }
+ 	int barrivals() const { return (barrivals_); }
+ 	int pdepartures() const { return (pdepartures_); }
+ 	int bdepartures() const { return (bdepartures_); }
++	int bdepartures_tot() const { return (bdepartures_tot_); }
+ #endif
+ 	int pdrops() const { return (pdrops_); }
+ 	int pmarks() const { return (pmarks_); }
+ 	int bdrops() const { return (bdrops_); }
+ 
++	// void reset_bdepartures_tot() {bdepartures_tot_ = 0;}
++
+ 	int qs_pkts() const { return (qs_pkts_); }
+ 	int qs_bytes() const { return (qs_bytes_); }
+ 	int qs_drops() const { return (qs_drops_); }
+@@ -141,11 +146,13 @@
+ 	int64_t barrivals_;
+ 	int64_t pdepartures_;
+ 	int64_t bdepartures_;
++	int64_t bdepartures_tot_;
+ #else /* no 64-bit integer */
+ 	int parrivals_;
+ 	int barrivals_;
+ 	int pdepartures_;
+ 	int bdepartures_;
++	int bdepartures_tot_;
+ #endif
+ 	int pdrops_;
+ 	int pmarks_;

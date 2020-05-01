@@ -1,0 +1,12 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classDcScheduler.html" title="DcScheduler" alt="" coords="5,56,101,83"/>
+<area shape="rect" id="node2" href="$classGreenScheduler.html" title="GreenScheduler" alt="" coords="171,5,285,32"/>
+<area shape="rect" id="node3" href="$classRoundRobinsScheduler.html" title="RoundRobinsScheduler" alt="" coords="149,56,307,83"/>
+<area shape="rect" id="node4" href="$classScoreScheduler.html" title="ScoreScheduler" alt="" coords="171,107,285,133"/>
+<area shape="rect" id="node5" href="$classBestScoreScheduler.html" title="BestScoreScheduler" alt="" coords="359,81,501,108"/>
+<area shape="rect" id="node8" href="$classProbabilisticScheduler.html" title="ProbabilisticScheduler" alt="" coords="355,132,505,159"/>
+<area shape="rect" id="node6" href="$classBestDENS.html" title="BestDENS" alt="" coords="575,31,660,57"/>
+<area shape="rect" id="node7" href="$classHerosScheduler.html" title="HerosScheduler" alt="" coords="560,81,675,108"/>
+<area shape="rect" id="node9" href="$classRandDENS.html" title="RandDENS" alt="" coords="573,132,661,159"/>
+<area shape="rect" id="node10" href="$classRandomScheduler.html" title="RandomScheduler" alt="" coords="553,183,681,209"/>
+</map>

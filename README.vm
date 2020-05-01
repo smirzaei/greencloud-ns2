@@ -1,0 +1,27 @@
+Updated: 2012-06-30
+To be distributed with the pre-installed GreenCloud Virtual Machine.
+
+This VM contains:
+A default Ubuntu 12.04 Desktop 32-bit installation, with many extraneous packages removed
+TCL, TK, OTCL, TclCL built from source
+NS2 and GreenCloud installed from source by diff & merge process
+Eclipse with the NS2/GreenCloud project already set up
+
+Security:
+The VM contains the normal 'root' user as well as a 'greencloud' user.
+It is assumed this VM will not be used in any security-sensitive way, and as such is treated as if it were a single running application, with no special security measures taken. The 'greencloud' user is the only registered user on the system. It is an Administrator account and is set to log in automatically on startup. The password for this account is 'greencloud'. Its home folder is not encrypted. If you want to encrypt the contents of this VM, then store the virtual disk file (*.vmdk) on an encrypted partition on your hard drive.
+
+Usage:
+To run the test simulation:
+    cd ~/greencloud
+    ./run
+To do a debug session in Eclipse:
+    open eclipse
+    open the "Debug" drop-down menu (upper left, with the same bug icon)
+    select "ns" from this menu
+
+Further Resources:
+This VM was built with VirtualBox (https://www.virtualbox.org/) and runs best that way. It should also be compatible with VMWare Player (http://www.vmware.com), but this installer has shown many problems on Linux and is not preferred. The GreenCloud developers do not support VMWare Player; it could not be installed successfully on the test machine at the time of writing (2012-06-30, Ubuntu 12.04LTS 32-bit i686)
+
+Please see the GreenCloud website http://greencloud.gforge.uni.lu/ for any additional information. This document will not be updated regularly.
+

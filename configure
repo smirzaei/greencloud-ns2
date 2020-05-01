@@ -1,0 +1,5 @@
+#! /bin/sh
+
+# this is just here for compatibility (for Eclipse, etc)
+# the make process for the parent folder should be config-less
+# and should defer to build/ns.greencloud/....

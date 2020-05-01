@@ -1,0 +1,9 @@
+<map id="ProviderScore" name="ProviderScore">
+<area shape="rect" id="node2" href="$classResourceProvider.html" title="ResourceProvider" alt="" coords="91,288,214,315"/>
+<area shape="rect" id="node10" href="$classTskComSink.html" title="TskComSink" alt="" coords="170,377,266,404"/>
+<area shape="rect" id="node4" href="$classTskComAgent.html" title="TskComAgent" alt="" coords="137,199,241,225"/>
+<area shape="rect" id="node6" href="$classProviderOutAgent.html" title="ProviderOutAgent" alt="" coords="265,199,387,225"/>
+<area shape="rect" id="node8" href="$classPoaBufList.html" title="PoaBufList" alt="" coords="211,109,297,136"/>
+<area shape="rect" id="node9" href="$classPoaBuf.html" title="PoaBuf" alt="" coords="222,5,286,32"/>
+<area shape="rect" id="node11" href="$classByteCounter.html" title="ByteCounter" alt="" coords="311,288,405,315"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="dchost.h" name="dchost.h">
+<area shape="rect" id="node3" href="$cloudtask_8h.html" title="cloudtask.h" alt="" coords="1265,379,1355,405"/>
+<area shape="rect" id="node13" href="$dcresource_8h.html" title="dcresource.h" alt="" coords="665,528,763,555"/>
+<area shape="rect" id="node16" href="$powermodel_8h.html" title="powermodel/powermodel.h" alt="" coords="253,677,428,704"/>
+<area shape="rect" id="node24" href="$resourceprovider_8h.html" title="resourceprovider.h" alt="" coords="1080,80,1207,107"/>
+<area shape="rect" id="node40" href="$linearpmodel_8h.html" title="powermodel/linearpmodel.h" alt="" coords="250,304,429,331"/>
+<area shape="rect" id="node5" href="$resourceconsumer_8h.html" title="resourceconsumer.h" alt="" coords="1380,453,1520,480"/>
+<area shape="rect" id="node6" href="$resdemand_8h.html" title="resdemand.h" alt="" coords="1432,603,1529,629"/>
+<area shape="rect" id="node9" href="$resource_8h.html" title="resource.h" alt="" coords="1423,677,1506,704"/>
+<area shape="rect" id="node15" href="$resourcespec_8h.html" title="resourcespec.h" alt="" coords="683,603,793,629"/>
+<area shape="rect" id="node25" href="$cpu_8h.html" title="cpu.h" alt="" coords="848,155,903,181"/>
+<area shape="rect" id="node26" href="$corescheduler_8h.html" title="corescheduler.h" alt="" coords="858,229,973,256"/>
+<area shape="rect" id="node28" href="$nic_8h.html" title="nic.h" alt="" coords="655,379,706,405"/>
+<area shape="rect" id="node31" href="$provideroutagent_8h.html" title="provideroutagent.h" alt="" coords="1029,155,1156,181"/>
+<area shape="rect" id="node33" href="$vmmigrationsink_8h.html" title="vmmigrationsink.h" alt="" coords="1755,155,1881,181"/>
+<area shape="rect" id="node36" href="$tskagent_8h.html" title="tskagent.h" alt="" coords="1437,155,1519,181"/>
+<area shape="rect" id="node39" href="$taskinfo_8h.html" title="taskinfo.h" alt="" coords="1232,155,1311,181"/>
+<area shape="rect" id="node27" href="$taskalloc_8h.html" title="taskalloc.h" alt="" coords="1061,304,1146,331"/>
+<area shape="rect" id="node35" href="$bytecounter_8h.html" title="bytecounter.h" alt="" coords="1783,304,1885,331"/>
+</map>

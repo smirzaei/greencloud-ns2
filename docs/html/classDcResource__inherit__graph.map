@@ -1,0 +1,5 @@
+<map id="DcResource" name="DcResource">
+<area shape="rect" id="node4" href="$classCPU.html" title="CPU" alt="" coords="35,155,85,181"/>
+<area shape="rect" id="node5" href="$classNIC.html" title="NIC" alt="" coords="109,155,152,181"/>
+<area shape="rect" id="node3" href="$classResource.html" title="Resource" alt="" coords="107,5,184,32"/>
+</map>

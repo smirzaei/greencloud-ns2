@@ -1,0 +1,6 @@
+
+[Default Applications]
+application/x-shellscript=gedit.desktop
+
+[Added Associations]
+application/x-shellscript=kde4-ktelnetservice.desktop;gedit.desktop;

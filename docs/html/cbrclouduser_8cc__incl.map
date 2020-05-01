@@ -1,0 +1,29 @@
+<map id="cbrclouduser.cc" name="cbrclouduser.cc">
+<area shape="rect" id="node6" href="$clouduser_8h.html" title="clouduser.h" alt="" coords="1841,80,1930,107"/>
+<area shape="rect" id="node11" href="$datacenter_8h.html" title="datacenter.h" alt="" coords="1838,155,1933,181"/>
+<area shape="rect" id="node14" href="$cloudtask_8h.html" title="cloudtask.h" alt="" coords="738,528,828,555"/>
+<area shape="rect" id="node38" href="$taskinfo_8h.html" title="taskinfo.h" alt="" coords="576,453,654,480"/>
+<area shape="rect" id="node13" href="$dchost_8h.html" title="dchost.h" alt="" coords="1548,304,1620,331"/>
+<area shape="rect" id="node22" href="$dcresource_8h.html" title="dcresource.h" alt="" coords="1285,677,1382,704"/>
+<area shape="rect" id="node24" href="$resourcespec_8h.html" title="resourcespec.h" alt="" coords="1413,752,1524,779"/>
+<area shape="rect" id="node25" href="$powermodel_8h.html" title="powermodel/powermodel.h" alt="" coords="1773,827,1948,853"/>
+<area shape="rect" id="node36" href="$tskagent_8h.html" title="tskagent.h" alt="" coords="882,453,964,480"/>
+<area shape="rect" id="node40" href="$vm_8h.html" title="vm.h" alt="" coords="1098,304,1148,331"/>
+<area shape="rect" id="node41" href="$vmmigration_8h.html" title="vmmigration.h" alt="" coords="1072,229,1174,256"/>
+<area shape="rect" id="node42" href="$dcscheduler_8h.html" title="dcscheduler/dcscheduler.h" alt="" coords="512,304,689,331"/>
+<area shape="rect" id="node43" href="$greenscheduler_8h.html" title="dcscheduler/greenscheduler.h" alt="" coords="503,229,698,256"/>
+<area shape="rect" id="node44" href="$roundrobinscheduler_8h.html" title="dcscheduler/roundrobinscheduler.h" alt="" coords="722,229,945,256"/>
+<area shape="rect" id="node45" href="$randdens_8h.html" title="dcscheduler/randdens.h" alt="" coords="2592,304,2752,331"/>
+<area shape="rect" id="node47" href="$bestdens_8h.html" title="dcscheduler/bestdens.h" alt="" coords="2256,304,2416,331"/>
+<area shape="rect" id="node49" href="$randomscheduler_8h.html" title="dcscheduler/randomscheduler.h" alt="" coords="2878,304,3085,331"/>
+<area shape="rect" id="node50" href="$herosscheduler_8h.html" title="dcscheduler/herosscheduler.h" alt="" coords="2171,229,2366,256"/>
+<area shape="rect" id="node31" href="$resourceprovider_8h.html" title="resourceprovider.h" alt="" coords="712,379,838,405"/>
+<area shape="rect" id="node39" href="$linearpmodel_8h.html" title="powermodel/linearpmodel.h" alt="" coords="1810,677,1988,704"/>
+<area shape="rect" id="node16" href="$resourceconsumer_8h.html" title="resourceconsumer.h" alt="" coords="892,603,1032,629"/>
+<area shape="rect" id="node17" href="$resdemand_8h.html" title="resdemand.h" alt="" coords="1050,752,1148,779"/>
+<area shape="rect" id="node19" href="$resource_8h.html" title="resource.h" alt="" coords="1166,827,1248,853"/>
+<area shape="rect" id="node32" href="$cpu_8h.html" title="cpu.h" alt="" coords="1232,603,1286,629"/>
+<area shape="rect" id="node35" href="$vmmigrationsink_8h.html" title="vmmigrationsink.h" alt="" coords="298,453,425,480"/>
+<area shape="rect" id="node46" href="$probabilisticscheduler_8h.html" title="probabilisticscheduler.h" alt="" coords="2830,379,2989,405"/>
+<area shape="rect" id="node48" href="$bestscorescheduler_8h.html" title="bestscorescheduler.h" alt="" coords="2268,379,2415,405"/>
+</map>

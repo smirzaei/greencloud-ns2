@@ -1,0 +1,174 @@
+/* -*-	Mode:C++; c-basic-offset:8; tab-width:8; indent-tabs-mode:t -*- */
+/*
+ */
+
+#include "clouduser.h"
+
+
+
+CloudUser::CloudUser() : id_(0), tskmips_(0) , memory_(0.0), storage_(0.0), tsksize_(0), tskmaxduration_(0.0),
+toutputsize_ (0), tintercom_(0),randomized_(0), mean_response_time_(-1), sd_response_time_(-1),
+unfinished_tasks_(-1), dc_(NULL),taskcounter_(0), random_tskmips_(0.0)
+{ 
+}
+
+CloudUser::~CloudUser()
+{
+}
+
+CloudTask *CloudUser::createTask()
+{
+	std::vector<Resource*> task_demand;
+
+	std::vector<Capacity> task_proc_cap;
+	double mips;
+	int processes_number = 1;
+	for(int i = 0 ; i < processes_number; i++){
+		if(!randomized_){
+			mips = tskmips_/processes_number;
+		} else {
+			do{
+			mips = random_tskmips_.value()/processes_number;
+			}while(mips > (tskmips_/processes_number)*tskmaxduration_*0.98);
+		}
+		task_proc_cap.push_back(mips);
+	}
+	task_demand.push_back(new Resource(Computing,1.0,task_proc_cap));
+
+	if(memory_!=0){
+	std::vector<Capacity> task_memory_cap;
+	task_memory_cap.push_back(memory_);
+	task_demand.push_back(new Resource(Memory,1.0,task_memory_cap));
+	}
+
+	if(storage_!=0){
+	std::vector<Capacity> task_storage_cap;
+	task_storage_cap.push_back(storage_);
+	task_demand.push_back(new Resource(Storage,1.0,task_storage_cap));
+	}
+
+	//  std::cerr << "MIPS:" << tskmips_ << "\tMEM:" << memory_<< "\tSTO:" <<storage_ << "\n";
+	// TODO: LEAK OCCURS: the created tasks are never released... However, they exist only until the end of a simulation.
+
+	CloudTask *pTskObj = new CloudTask(tsksize_, tskmaxduration_,task_demand, this);
+	pTskObj->setID(taskcounter_);
+//	std::cout <<"Task generated, id: "<< pTskObj->id_ << "\n";
+	pTskObj->setOutput(toutputsize_);
+	pTskObj->setIntercom(tintercom_);
+	TaskInfo* tmp_info_ =  new TaskInfo(pTskObj,Scheduler::instance().clock(),Scheduler::instance().clock() + tskmaxduration_);
+	tasks_info_.push_back(tmp_info_);
+	pTskObj->info_= tmp_info_;
+	taskcounter_++;
+
+	return pTskObj;
+}
+
+void CloudUser::setRandomized(int i){
+	randomized_  =i;
+	if(i!=0){
+	random_tskmips_.setavg(tskmips_);
+	}
+}
+
+int CloudUser::process_command(int argc, const char*const* argv){
+	if(argc==2){
+		if (strcmp(argv[1], "print-tasks-status") == 0) {
+			printTasksStatus();
+			return (TCL_OK);
+		} else if(strcmp(argv[1], "post-simulation-test-tasks") == 0){
+			postSimulationTestTasks();
+			return (TCL_OK);
+		} else if(strcmp(argv[1], "calculate-statistics") == 0){
+			calculateStatistics();
+			return (TCL_OK);
+		}
+
+
+	} else if(argc==3){
+		if (strcmp(argv[1], "join-datacenter") == 0) {
+			DataCenter *dc = dynamic_cast<DataCenter*> (TclObject::lookup(argv[2]));
+			if(dc){
+				dc_ = dc;
+				return (TCL_OK);
+			}
+			return (TCL_ERROR);
+		} else 	if (strcmp(argv[1], "set-randomized") == 0) {
+			setRandomized(atoi(argv[2]));
+			return (TCL_OK);
+		}
+	}
+	return -1;
+}
+
+void CloudUser::printTasksStatus(){
+	std::vector<TaskInfo*>::iterator i;
+	std::cout << "Cloud User:\t" << id_ << "\n";
+	for(i = tasks_info_.begin(); i < tasks_info_.end(); i++){
+		std::cout << fixed << setprecision(2) << "T: " << (*i)->getTaskId() <<
+				" Rel: "<< (*i)->getReleaseTime() <<
+				" Ser: "<< (*i)->getServerFinishTime() <<
+				" Ext: "<< (*i)->getDcExitTime() <<
+				" Due: " << (*i)->getDueTime() <<
+				"\n";
+	}
+}
+
+void CloudUser::postSimulationTestTasks(){
+	bool ok = true;
+	std::vector<TaskInfo*>::iterator i;
+	unfinished_tasks_ = 0;
+	for(i = tasks_info_.begin(); i < tasks_info_.end(); i++){
+		if(false){
+//		if((*i)->getDcExitTime() == -1){
+			ok = false;
+			unfinished_tasks_++;
+			std::cout << "Cloud User:\t" << id_ << "\t";
+		std::cout << fixed << setprecision(2) << "Task unfinished, id: " << (*i)->getTaskId() <<
+				" Rel: "<< (*i)->getReleaseTime() <<
+				" Ser: "<< (*i)->getServerFinishTime() <<
+				" Ext: "<< (*i)->getDcExitTime() <<
+				" Due: " << (*i)->getDueTime() <<
+				"\n";
+		}
+	}
+	if(ok){
+		std::cout << "Cloud User:\t" << id_ << "\t: all tasks finished sucesfully.\n";
+	} else {
+		std::cout << "Cloud User:\t" << id_ << "\t:\t"<< unfinished_tasks_ << "\ttasks did NOT exit datacenter.\n";
+	}
+}
+
+void CloudUser::calculateStatistics(){
+	std::vector<TaskInfo*>::iterator i;
+	double sum = 0;
+	int counter = 0;
+	unfinished_tasks_ = 0;
+
+	//mean calculation
+	if(!tasks_info_.empty()){
+	for(i = tasks_info_.begin(); i < tasks_info_.end(); i++){
+		if((*i)->getDcExitTime() != -1){
+			sum+= (*i)->getDcExitTime() - (*i)->getReleaseTime();
+			counter++;
+		} else {
+			unfinished_tasks_++;
+		}
+	}
+
+	mean_response_time_ = sum / counter;
+
+	// sd calculation
+	sum = 0;
+	double tmp;
+	for(i = tasks_info_.begin(); i < tasks_info_.end(); i++){
+		if((*i)->getDcExitTime() != -1){
+			tmp = pow( ((*i)->getDcExitTime() - (*i)->getReleaseTime() ) - mean_response_time_, 2.0f);
+
+			sum += tmp;
+		}
+	}
+	sd_response_time_ = sqrt(sum/counter);
+	} else {
+		std::cerr << "WARNING: No tasks generated by the cloud user: " << id_ << " (normally it should not happen).\n";
+	}
+}

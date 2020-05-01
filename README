@@ -1,0 +1,20 @@
+INSTALLATION GUIDE
+
+GreenCloud simulator is an extension of NS-2 network simulator.
+
+It comes as an archived source tree, or as a pre-configured VM, which works with VirtualBox and theoretically should work with VMWare Player as well (although the developers do not test or support this use case). The VM also includes a pre-configured Eclipse environment, so it is the easiest way to download GreenCloud and start running simulations and/or modifying the source code.
+
+If you are building GreenCloud on a non-VM machine, here are the basic instructions:
+
+1. Download GreenCloud from its homepage at http://greencloud.gforge.uni.lu/
+
+2. Unpack the downloaded software. It comes already integrated into NS-2 source code.
+
+3. Navigate to the extracted directory.
+
+4. run ./install.sh to do a full installation (it should work on any Debian-based system with a 3.2+ kernel, i.e. Ubuntu 12.x and higher)
+
+5. Execute the simulation script by running ./run
+
+6. View the dashboard by opening src/dashboard/dashboard.html. You can also enable automatic dashboard display by un-commenting the last 2 lines in the "run" script, although depending on your OS configuration, this might give annoying results.
+

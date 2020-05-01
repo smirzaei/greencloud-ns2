@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['randdens',['RandDENS',['../classRandDENS.html#a369114996304ed0066adb1c755963d05',1,'RandDENS']]],
+  ['randomscheduler',['RandomScheduler',['../classRandomScheduler.html#a07728196ee983e8a138580ff3db57364',1,'RandomScheduler']]],
+  ['receivedtsk',['receivedTsk',['../classDataCenter.html#a9d0175e9f1c3fb4f5354c698e6699db9',1,'DataCenter']]],
+  ['recv',['recv',['../classResourceProvider.html#a22bd0ee14e4d2323ce4bab9f1361910f',1,'ResourceProvider::recv()'],['../classTskComAgent.html#a241e6eaa5dcf472e45d3d06c98a41840',1,'TskComAgent::recv()'],['../classTskComSink.html#a04282c9d822e6f44313823cdd8d8f305',1,'TskComSink::recv()'],['../classTskOutSink.html#a416c8f89da4506431fc3bbe66a152e11',1,'TskOutSink::recv()'],['../classVmMigrationSink.html#ae1df3a99bff109ac17af34558b053e6c',1,'VmMigrationSink::recv()']]],
+  ['releaseallocation',['releaseAllocation',['../classResourceProvider.html#af80ba5943b9737a8c6db75a1a060af6d',1,'ResourceProvider']]],
+  ['releasealltaskallocs',['releaseAllTaskAllocs',['../classCloudTask.html#af64ad2d96662384f608b6d34729032ed',1,'CloudTask']]],
+  ['removeafterfailure',['removeAfterFailure',['../classTaskAlloc.html#af9c21de3d7ced9021e722acd9efc1cf2',1,'TaskAlloc']]],
+  ['removeallocationsfromassginedlist',['removeAllocationsFromAssginedList',['../classCoreScheduler.html#a28ee02d70974e015421f9bad5b6600a3',1,'CoreScheduler']]],
+  ['removecompleted',['removeCompleted',['../classCoreScheduler.html#af49fc61349a95311d79b9bcaedbb5a33',1,'CoreScheduler']]],
+  ['removefailedtaskalloc',['removeFailedTaskAlloc',['../classCoreScheduler.html#ab331f4f6c396c949336458e646632672',1,'CoreScheduler']]],
+  ['removefromassginedlist',['removeFromAssginedList',['../classCoreScheduler.html#acd0151d1c1db5689090294d9d057024b',1,'CoreScheduler']]],
+  ['removetaskalloc',['removeTaskAlloc',['../classCloudTask.html#ae3b06e7a3f39b6147503e687136b218a',1,'CloudTask::removeTaskAlloc()'],['../classCoreScheduler.html#a09687af96eb3c60fe56e321f28395f71',1,'CoreScheduler::removeTaskAlloc(std::vector&lt; TaskAlloc * &gt;::iterator &amp;iter, bool executed)'],['../classCoreScheduler.html#a125f30ed14721c8262eb23a85b7a88dd',1,'CoreScheduler::removeTaskAlloc(TaskAlloc *ta)']]],
+  ['removevcorescheduler',['removeVcoreScheduler',['../classCoreScheduler.html#a888f124330dc4c9a2255e7070cfd1d31',1,'CoreScheduler']]],
+  ['removevm',['removeVM',['../classResourceProvider.html#abf56cd75334f22b0d0e6ddf5ca1fa254',1,'ResourceProvider']]],
+  ['resdemand',['ResDemand',['../classResDemand.html#a76ad4c6644e1d830ee89cd071230c885',1,'ResDemand::ResDemand(Resource &amp;res)'],['../classResDemand.html#abe8e19b9a6b64db73c38914550036e55',1,'ResDemand::ResDemand(Resource &amp;res, DcResource *svr)']]],
+  ['resetbytessince',['resetBytesSince',['../classByteCounter.html#af0589c683ce313c8f89435f15ab6174e',1,'ByteCounter']]],
+  ['resource',['Resource',['../classResource.html#abf5ff874fdc9d9b22736d292a3c88e7b',1,'Resource::Resource(res_type t, double a, std::vector&lt; Capacity &gt; cap)'],['../classResource.html#a5a87b23dc0327bbf8d53c6f38f637f48',1,'Resource::Resource()']]],
+  ['resourceconsumer',['ResourceConsumer',['../classResourceConsumer.html#a5b3ea511fad734a8888b721e214b24aa',1,'ResourceConsumer::ResourceConsumer()'],['../classResourceConsumer.html#af33242d7499918469cc22aa3a8eacbe3',1,'ResourceConsumer::ResourceConsumer(unsigned int size, std::vector&lt; Resource * &gt; dem, bool isTask, bool isVM)']]],
+  ['resourceprovider',['ResourceProvider',['../classResourceProvider.html#acbc600afebff9d531b9bc48b48415bc7',1,'ResourceProvider']]],
+  ['resourcespec',['ResourceSpec',['../classResourceSpec.html#ae11c4fd48475c69150d292b69a8a8f7a',1,'ResourceSpec']]],
+  ['resourcespecclass',['ResourceSpecClass',['../classResourceSpecClass.html#a0c3dafe4bf588a413cc70bf96a03097d',1,'ResourceSpecClass']]],
+  ['roundrobinsscheduler',['RoundRobinsScheduler',['../classRoundRobinsScheduler.html#a7e23858639d6449b1c5ccc18db1e1a05',1,'RoundRobinsScheduler']]]
+];

@@ -1,0 +1,6 @@
+<map id="BestScoreScheduler" name="BestScoreScheduler">
+<area shape="rect" id="node4" href="$classBestDENS.html" title="BestDENS" alt="" coords="5,229,91,256"/>
+<area shape="rect" id="node5" href="$classHerosScheduler.html" title="HerosScheduler" alt="" coords="115,229,229,256"/>
+<area shape="rect" id="node2" href="$classScoreScheduler.html" title="ScoreScheduler" alt="" coords="52,80,167,107"/>
+<area shape="rect" id="node3" href="$classDcScheduler.html" title="DcScheduler" alt="" coords="61,5,157,32"/>
+</map>

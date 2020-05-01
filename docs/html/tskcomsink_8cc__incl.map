@@ -1,0 +1,20 @@
+<map id="tskcomsink.cc" name="tskcomsink.cc">
+<area shape="rect" id="node8" href="$bytecounter_8h.html" title="bytecounter.h" alt="" coords="117,304,219,331"/>
+<area shape="rect" id="node10" href="$tskcomsink_8h.html" title="tskcomsink.h" alt="" coords="794,80,894,107"/>
+<area shape="rect" id="node11" href="$resourceprovider_8h.html" title="resourceprovider.h" alt="" coords="767,155,894,181"/>
+<area shape="rect" id="node25" href="$cloudtask_8h.html" title="cloudtask.h" alt="" coords="666,453,755,480"/>
+<area shape="rect" id="node15" href="$resource_8h.html" title="resource.h" alt="" coords="1492,752,1575,779"/>
+<area shape="rect" id="node18" href="$dcresource_8h.html" title="dcresource.h" alt="" coords="673,603,770,629"/>
+<area shape="rect" id="node22" href="$cpu_8h.html" title="cpu.h" alt="" coords="1243,229,1298,256"/>
+<area shape="rect" id="node23" href="$corescheduler_8h.html" title="corescheduler.h" alt="" coords="1308,304,1423,331"/>
+<area shape="rect" id="node26" href="$resourceconsumer_8h.html" title="resourceconsumer.h" alt="" coords="1362,528,1502,555"/>
+<area shape="rect" id="node29" href="$nic_8h.html" title="nic.h" alt="" coords="572,379,623,405"/>
+<area shape="rect" id="node31" href="$provideroutagent_8h.html" title="provideroutagent.h" alt="" coords="1023,229,1150,256"/>
+<area shape="rect" id="node33" href="$vmmigrationsink_8h.html" title="vmmigrationsink.h" alt="" coords="195,229,322,256"/>
+<area shape="rect" id="node35" href="$tskagent_8h.html" title="tskagent.h" alt="" coords="907,229,989,256"/>
+<area shape="rect" id="node37" href="$taskinfo_8h.html" title="taskinfo.h" alt="" coords="753,229,831,256"/>
+<area shape="rect" id="node20" href="$resourcespec_8h.html" title="resourcespec.h" alt="" coords="775,677,886,704"/>
+<area shape="rect" id="node21" href="$powermodel_8h.html" title="powermodel/powermodel.h" alt="" coords="634,752,809,779"/>
+<area shape="rect" id="node24" href="$taskalloc_8h.html" title="taskalloc.h" alt="" coords="1233,379,1319,405"/>
+<area shape="rect" id="node27" href="$resdemand_8h.html" title="resdemand.h" alt="" coords="1375,677,1473,704"/>
+</map>

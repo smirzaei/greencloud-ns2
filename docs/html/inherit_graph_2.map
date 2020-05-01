@@ -1,0 +1,22 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$classCBRCloudUserClass.html" title="CBRCloudUserClass" alt="" coords="142,5,285,32"/>
+<area shape="rect" id="node3" href="$classCpuClass.html" title="CpuClass" alt="" coords="174,56,253,83"/>
+<area shape="rect" id="node4" href="$classDataCenterClass.html" title="DataCenterClass" alt="" coords="153,107,273,133"/>
+<area shape="rect" id="node5" href="$classDcHostClass.html" title="DcHostClass" alt="" coords="164,157,263,184"/>
+<area shape="rect" id="node6" href="$classDcRackClass.html" title="DcRackClass" alt="" coords="163,208,264,235"/>
+<area shape="rect" id="node7" href="$classDcResourceClass.html" title="DcResourceClass" alt="" coords="150,259,277,285"/>
+<area shape="rect" id="node8" href="$classExpCloudUserClass.html" title="ExpCloudUserClass" alt="" coords="144,309,283,336"/>
+<area shape="rect" id="node9" href="$classLinearPModelClass.html" title="LinearPModelClass" alt="" coords="146,360,281,387"/>
+<area shape="rect" id="node10" href="$classNicClass.html" title="NicClass" alt="" coords="176,411,251,437"/>
+<area shape="rect" id="node11" href="$classPerComponentModelClass.html" title="PerComponentModelClass" alt="" coords="125,461,301,488"/>
+<area shape="rect" id="node12" href="$classPOOTrafficClass.html" title="POOTrafficClass" alt="" coords="154,512,273,539"/>
+<area shape="rect" id="node13" href="$classProvOutAgentClass.html" title="ProvOutAgentClass" alt="" coords="146,563,281,589"/>
+<area shape="rect" id="node14" href="$classResourceSpecClass.html" title="ResourceSpecClass" alt="" coords="143,613,283,640"/>
+<area shape="rect" id="node15" href="$classSwitchEnergyModelClass.html" title="SwitchEnergyModelClass" alt="" coords="128,664,299,691"/>
+<area shape="rect" id="node16" href="$classTskComAgentClass.html" title="TskComAgentClass" alt="" coords="145,715,282,741"/>
+<area shape="rect" id="node17" href="$classTskComSinkClass.html" title="TskComSinkClass" alt="" coords="149,765,278,792"/>
+<area shape="rect" id="node18" href="$classTskOutSinkClass.html" title="TskOutSinkClass" alt="" coords="152,816,275,843"/>
+<area shape="rect" id="node19" href="$classVMClass.html" title="VMClass" alt="" coords="176,867,251,893"/>
+<area shape="rect" id="node20" href="$classVmMigrationClass.html" title="VmMigrationClass" alt="" coords="149,917,277,944"/>
+<area shape="rect" id="node21" href="$classVmMigrationSinkClass.html" title="VmMigrationSinkClass" alt="" coords="136,968,291,995"/>
+</map>

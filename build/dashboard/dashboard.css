@@ -1,0 +1,192 @@
+#top {
+}
+
+body {
+	margin: 0px;
+}
+
+h1, h2, h3, h4, p{ 
+    color: #1A1A1A;
+    font-family: "wf_SegoeUILight", "wf_SegoeUI", "Segoe UI Light", "Segoe WP Light", "Segoe UI", "Segoe", "Segoe WP", "Tahoma", "Verdana", "Arial", "sans-serif";
+    font-size: 1.83em;
+    font-weight: 300;
+    padding: 10px;
+    margin: 0px;
+}
+
+.title {
+	text-align: left;
+}
+
+.titleInner {
+	display: block;
+	text-align: center;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.titleLogo, .titleLogo img {
+	display: inline;
+	float: left;
+	height: 100px;
+	margin-left:5px;
+}
+
+.titleHeading {
+	display: block;
+	margin: 0px;
+	height: 100px;
+}
+
+h1 {
+	padding-top: 30px;
+	font-size: 3em;
+	/*font-family: sans-serif;*/
+}
+
+.pageContent {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contentWidth {
+	/* width: 1300px; */
+}
+
+.workspace {
+	display: table-row;
+}
+
+.nav {
+	float:left;
+	width: 400px;
+	display: table-cell;
+	margin: 0px;
+	/* border-top: 7px solid #eee; */
+	/* border-right: 7px solid #ccc; */
+	padding-left: 8px;
+	/* background-color: #E1E1E1; */
+	padding-top: 20px;
+}
+
+.navData tr td {
+	/*font-family: sans-serif;*/
+	font-size: 16px;
+}
+
+.navData tr .dataLabel {
+	/*font-weight: bold;*/
+	font-size: 18px;
+}
+
+.navData tr .dataValue {
+	font-weight: lighter;
+}
+
+.sectionHeading {
+	clear: both;
+	background-color: #E1E1E1;
+	border-bottom: 7px solid #ccc;
+}
+
+.subSectionHeading {
+	clear: both;
+	/* margin-top: 15px; */
+	padding: 2px;
+	padding-left: 10px;
+	background-color: #DCDCDC;
+	font-size: 24px;
+	
+}
+
+.mainContent {
+	display: table-cell;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+}
+
+.graphOuterDiv {
+	display: inline-block; /* so that they stack left-to-right, instead of top-to-bottom */
+	margin-top: 10px;
+    margin-left: auto; /* centered */
+    margin-right: auto; /* centered */
+    margin-bottom: 40px;
+    padding-left: 20px; /* for the y-axis */
+    padding-bottom: 20px; /* for the x-axis */
+}
+
+.graphContainerHeader {
+	text-align: center;
+	/*height: 25px; /* TITLE_HEIGHT - (.ui-widget-header:border) (usually 1px) */
+	margin: 0px;
+	font-size: 22px;
+	/*font-family: sans-serif;
+	font-weight: bold;*/
+}
+
+/* This goes right below the graphContainerHeader to show the total value of the pie chart data */
+.pieChartTotal {
+	text-align: center;
+	/*font-family: sans-serif;*/
+	font-size: 16px;
+}
+
+.graphContainer {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pieLabel {
+	/*font-family:sans; */
+	font-size:20px; 
+	text-align:center; 
+	color:black;
+}
+
+.xAxis .ticklabel {
+    margin-top: 10px;
+}
+
+.yAxis .ticklabel {
+    margin-right: 20px;
+}
+
+/* JQuery Overrides */
+.ui-widget-content {
+    border: none; /* no border around top-level (tabs' parent) div */
+}
+
+.ui-tabs-nav li,
+.ui-tabs-nav a,
+.ui-state-active,
+.ui-state-focus {
+    /* clicking on a tab shouldn't produce a border (makes it look cut off) */
+    outline: none;
+    border: none;
+}
+
+.popbox {
+    display: none;
+    position: absolute;
+    z-index: 99999;
+    width: 375px;
+    padding: 10px;
+    background: #EEEFEB;
+    color: #000000;
+    border: 1px solid #4D4F53;
+    margin: 0px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(164, 164, 164, 1);
+    box-shadow: 0px 0px 5px 0px rgba(164, 164, 164, 1);
+}
+.popbox h2 {
+    background-color: #4D4F53;
+    color: #E3E5DD;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    margin: -10px 0px 8px -10px;
+    padding: 5px 10px;
+}

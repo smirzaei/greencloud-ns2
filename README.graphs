@@ -1,0 +1,66 @@
+# Creation of new graph for dashboard (also useful for external plotting)
+
+The sample new data serites is called "newSeries" in this example.
+
+## Create handling of new graph files:
+
+### In record.tcl
+
+Open the file for graph:
+
+	set graph(newSeries) [open "../../traces/newSeries.tr" w]
+	
+In case statistics need to be cyclically gathered from the nodes, accordingly adapt the procedure:
+
+	proc record_graphs {}
+	
+### In finish.tcl
+
+Output the data from graphing:
+
+	puts $graph(newSeries) [output]
+
+Then:
+
+	close $graph(newSeries)
+	
+## Modify dashboard files
+
+### In graph-definitions.js
+
+Add entry to dataGroups object, e.g.:
+
+    'newSeries': {
+        'title': 'title of newSeries',
+        'xaxis': 'x axis label',
+        'yaxis': 'y axis label',
+    },
+
+
+	
+
+### In dashboard.js
+
+        drawChart(graphContainer, loadFactor, "newSeries", DATA_DISPLAY_TYPE.LINE);
+        Or for barplot:
+        drawChart(graphContainer, loadFactor, "newSeries", DATA_DISPLAY_TYPE.BAR);
+        
+        
+# Creation of new numerical output for the overview pane:
+
+## Modify dashboard files
+
+### In graph-definitions.js
+
+If you want add to numerical value to the overview pane, add entry to corresponding place in dataSource,  e.g.:
+    'taskSummary': {
+        'labels': {
+            'tasks.average': 'Average Tasks/Server',
+            'tasks.total': 'Total Tasks',
+            'tasks.failed.dc': 'Tasks Rejected by DC',
+            'tasks.newThing': 'Tasks New thing',
+        },
+    },
+    
+    
+    

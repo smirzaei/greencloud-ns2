@@ -1,0 +1,9 @@
+<map id="datacenter.h" name="datacenter.h">
+<area shape="rect" id="node2" href="$clouduser_8h.html" title="clouduser.h" alt="" coords="318,80,407,107"/>
+<area shape="rect" id="node6" href="$expclouduser_8cc.html" title="expclouduser.cc" alt="" coords="541,155,659,181"/>
+<area shape="rect" id="node8" href="$datacenter_8cc.html" title="datacenter.cc" alt="" coords="585,80,687,107"/>
+<area shape="rect" id="node3" href="$cbrclouduser_8cc.html" title="cbrclouduser.cc" alt="" coords="5,155,120,181"/>
+<area shape="rect" id="node4" href="$cloudtask_8cc.html" title="cloudtask.cc" alt="" coords="144,155,240,181"/>
+<area shape="rect" id="node5" href="$clouduser_8cc.html" title="clouduser.cc" alt="" coords="264,155,360,181"/>
+<area shape="rect" id="node7" href="$paretoclouduser_8cc.html" title="paretoclouduser.cc" alt="" coords="385,155,517,181"/>
+</map>

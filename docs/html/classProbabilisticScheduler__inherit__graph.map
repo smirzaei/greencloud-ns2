@@ -1,0 +1,6 @@
+<map id="ProbabilisticScheduler" name="ProbabilisticScheduler">
+<area shape="rect" id="node4" href="$classRandDENS.html" title="RandDENS" alt="" coords="5,229,93,256"/>
+<area shape="rect" id="node5" href="$classRandomScheduler.html" title="RandomScheduler" alt="" coords="117,229,245,256"/>
+<area shape="rect" id="node2" href="$classScoreScheduler.html" title="ScoreScheduler" alt="" coords="57,80,172,107"/>
+<area shape="rect" id="node3" href="$classDcScheduler.html" title="DcScheduler" alt="" coords="67,5,163,32"/>
+</map>

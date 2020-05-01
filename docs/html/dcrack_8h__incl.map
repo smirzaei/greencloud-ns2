@@ -1,0 +1,21 @@
+<map id="dcrack.h" name="dcrack.h">
+<area shape="rect" id="node3" href="$dchost_8h.html" title="dchost.h" alt="" coords="1755,80,1827,107"/>
+<area shape="rect" id="node5" href="$cloudtask_8h.html" title="cloudtask.h" alt="" coords="789,453,878,480"/>
+<area shape="rect" id="node14" href="$dcresource_8h.html" title="dcresource.h" alt="" coords="1349,603,1446,629"/>
+<area shape="rect" id="node17" href="$powermodel_8h.html" title="powermodel/powermodel.h" alt="" coords="1699,752,1874,779"/>
+<area shape="rect" id="node25" href="$resourceprovider_8h.html" title="resourceprovider.h" alt="" coords="891,155,1018,181"/>
+<area shape="rect" id="node41" href="$linearpmodel_8h.html" title="powermodel/linearpmodel.h" alt="" coords="1803,379,1981,405"/>
+<area shape="rect" id="node7" href="$resourceconsumer_8h.html" title="resourceconsumer.h" alt="" coords="745,528,885,555"/>
+<area shape="rect" id="node8" href="$resdemand_8h.html" title="resdemand.h" alt="" coords="729,677,826,704"/>
+<area shape="rect" id="node10" href="$resource_8h.html" title="resource.h" alt="" coords="931,752,1013,779"/>
+<area shape="rect" id="node16" href="$resourcespec_8h.html" title="resourcespec.h" alt="" coords="1423,677,1534,704"/>
+<area shape="rect" id="node26" href="$cpu_8h.html" title="cpu.h" alt="" coords="1289,229,1343,256"/>
+<area shape="rect" id="node27" href="$corescheduler_8h.html" title="corescheduler.h" alt="" coords="1259,304,1373,331"/>
+<area shape="rect" id="node29" href="$nic_8h.html" title="nic.h" alt="" coords="1424,453,1475,480"/>
+<area shape="rect" id="node32" href="$provideroutagent_8h.html" title="provideroutagent.h" alt="" coords="1081,229,1207,256"/>
+<area shape="rect" id="node34" href="$vmmigrationsink_8h.html" title="vmmigrationsink.h" alt="" coords="249,229,375,256"/>
+<area shape="rect" id="node37" href="$tskagent_8h.html" title="tskagent.h" alt="" coords="705,229,788,256"/>
+<area shape="rect" id="node40" href="$taskinfo_8h.html" title="taskinfo.h" alt="" coords="813,229,891,256"/>
+<area shape="rect" id="node28" href="$taskalloc_8h.html" title="taskalloc.h" alt="" coords="988,379,1073,405"/>
+<area shape="rect" id="node36" href="$bytecounter_8h.html" title="bytecounter.h" alt="" coords="245,379,347,405"/>
+</map>

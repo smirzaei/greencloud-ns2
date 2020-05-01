@@ -1,0 +1,13 @@
+Q: How can I use the support of Virtual Machine migration supported by the GreenCloud Simulator. 
+
+A: You can begin experiments with migration by uncommenting the code in the end of the dc.tcl script:
+
+# puts "Testing VM migration..."
+# $ns at 1.0 "$DCenter migrate-vm $vms_(0) $hosts_(4)"
+# puts “Migration initialized correctly"
+
+Which starts migration of vm id 0 to host 4 at second 1 of simulation time.
+
+You must ensure that enough resources are available on the migration target machine.
+
+This tcl code is being processed by DataCenter object via command function, so you can also trigger migration directly in C++ code.

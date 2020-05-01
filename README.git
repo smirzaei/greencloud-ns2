@@ -1,0 +1,242 @@
+##########################
+## Git Repository Notes ##
+##########################
+The source code as downloaded from our website is not configured for Git. However, if you will be using Git to help develop GreenCloud, you can convert the source code tree to a Git repository by running these commands.
+
+WARNING: please save all of your changes elsewhere before doing any of this!
+
+# start in the home directory
+    cd ~
+
+# remove the existing source directory
+    trash-put greencloud
+
+# clone the Git repository from GForge.uni.lu
+# replace <USER_NAME> with your GForge username. 
+# You will also need to set up your SSH public/private key pair as documented on http://hpc.uni.lu
+    git clone git+ssh://<USER_NAME>@gforge.uni.lu/git/greencloud/greencloud.git greencloud
+    cd greencloud
+    git checkout -b develop origin/develop
+
+# set up Git metadata (<NAME> is your human name, i.e. "Luke Scott")
+    git config --global user.name "<NAME>"
+    git config --global user.email "<EMAIL>"
+
+# restore the Eclipse project config
+    tar -zxvf ../config/eclipse-project-metadata.tar.gz
+
+
+Now, if you open Eclipse, the project should be set up. If it isn't, use File > Import... > Existing Projects Into Workspace.
+
+Below are some helpful commands and other information.
+
+###############################################
+## Introduction to using Git with GreenCloud ##
+###############################################
+Always run Git commands from the working directory (i.e. ~/greencloud/). The intended audience for this document is developers with write access to our Git repository at GForge (git+ssh://gforge.uni.lu), but developers who just want to keep a modified version up to date will find this helpful as well.
+
+These instructions are based around the basic use cases in development: Download source code, modify and commit changes, merge (synchronize) changes to/from the main repository, and release management. They are all based on the LINUX command line; other environments such as Windows, OSX, or visual tools will be conceptually the same, but may have small syntactic differences.
+
+For general Git documentation, including a more complete command reference, please see
+     http://learn.github.com (specifically the branching article at http://learn.github.com/p/branching.html), 
+     http://book.git-scm.com and http://git-scm.com/documentation.
+
+
+
+## Branching/Merging ##
+The GreenCloud project uses a standard Develop-Master-Hotfix branch model. All day-to-day development is done on 'develop'. When a new release is performed, the 'develop' branch will be merged to 'master'. Hotfixes use a 'hotfix' branch which only ever gets merged from/to 'master'. The 'master' branch is reserved ONLY for releases, and each merge to 'master' must be tagged with a release version number.
+
+For an overview of this branching model, including some diagrams, see http://nvie.com/posts/a-successful-git-branching-model/. We use a simplified version of this web page; we only use a release branch if we need it (we do not always create a separate branch for each release). As of this writing, we do not have any feature branches, but if developers need to coordinate on a single large feature then we will accommodate as such.
+
+
+## Automated Testing ##
+Currently, this is not set up. Our plans are to have 'develop' pulled down nightly by a build/QA environment and built and tested automatically. If/when a build is unsuccessful, or automated tests fail, then developers will be notified, and recovering the build will become the most important priority.
+
+
+
+### Use Cases/Command Reference ###
+# Below are the commands needed for various use cases while you are working with the Git repository. 
+# As you continue to modify code, repeat the "Commit local...", "Push..." and "Pull..." steps to keep in sync.
+
+
+## Commit local changes to your local Git repository (does not affect GForge until you run "git push") ##
+# fill in the message string to describe your changes
+    git add ./ -A
+    git commit -a --message=""
+
+
+## Push your (locally committed) changes to GForge ##
+    git push
+
+
+## Pull other peopele's changes from GForge ##
+    git remote update
+    git pull --all
+
+
+## Show the current state of your working directory ##
+    git status
+
+
+## Show the commit log ##
+# standard format:
+    git log
+
+# this one gives a nice visual output format:
+    git log --pretty=format:"%h : %s" --date-order --graph 
+
+
+#########################
+## Preparing a Release ##
+#########################
+# Our releases are numbered Major.Minor.Build, where Major is a structural version, Minor is a 2-digit featureset increment and Build is the build number assigned by the automated build process (not yet operating at the time of writing).
+
+# A release has four steps:
+# 1. separate (i.e. branch/merge) the code which will be released, so that any current work items can be finished
+# 2. finish the work items specific to this release. (this may occur in a separate Release Branch, if needed)
+# 3. merge into the 'master' branch and tag with release number
+# 4. create the downloadable files (.tar.gz archive, and updated VM)
+
+# This is an example work flow for doing a release to Master. Note that #7 and #8 are committed to Develop, and are NOT included in the release, even though they were committed while the release was being worked on. Also, the note after #10 shows where pre-release testing should be done (right before merging to Master). #12 shows that any work done on the Release Branch must be merged back into Develop or else it will be lost. In this case, if #12 is not done, then #9 and #10 would be lost.
+
+Develop
+| Release Branch
+| | Master
+| | | 
+* | |  1: normal daily development work
+* | |  2: normal daily development work
+* | |  3: normal daily development work
+* | |  4: normal daily development work
+* | |  5: normal daily development work
+|\| | 
+| * |  6: Merging to Release Branch for upcoming release
+* | |  7: normal daily development work (not included in upcoming release)
+* | |  8: normal daily development work (not included in upcoming release)
+| * |  9: Finishing some current development work for upcoming release
+| * |  10: Finishing some current development work for upcoming release
+| | |  
+| | |  <-- Here is where you would do pre-release testing
+| |\|  
+| | *  11: Merging Release Branch into Master for the final release
+| | *  12: Tag this release with a version number
+|/| |  
+* | |  13: Merging Release Branch work back into Develop
+
+# Start by synchronizing your local 'develop' branch if it is currently out of sync:
+    git checkout develop
+    git pull
+    git status
+    git push --dry-run
+
+# If 'git status' or 'git push' show any files not in sync, then stop here, test and commit any local changes before synchronizing with GForge.
+# If your local tests are successful, then do a 'commit' and 'push' to finish the synchronization (add a descriptive commit message inside the "" quotes):
+    git add ./ -A
+    git commit -a --message=""
+    git push
+
+# Merge the current 'develop' branch into 'staging' to separate the release code from everyday development.
+# if you have not created a 'staging' branch on your local machine yet:
+    git checkout -b staging origin/staging
+
+# if you already have a 'staging' branch on your machine:
+    git checkout staging
+
+# merge 'develop' to bring everything up to date
+    git pull
+    git merge develop
+
+# Finish any open work items that are to be included in this release. This may include merging single commits from 'develop' to 'staging'.
+# build, test, verify the 'staging' code...
+# merge to 'master':
+    git checkout master
+    git merge staging
+# tag 'master' with the release version (replace 1.2.3 with the correct version number):
+    git tag -a release-1.2.3
+
+
+## To Create a .tar.gz Archive ##
+# start these commands from the parent directory. If your 'greencloud' source tree is in /home/username/greencloud,
+# then your starting directory should be /home/username.
+
+	cd ~
+    # Make a FULL COPY of the 'greencloud' directory before continuing
+    rsync -av greencloud/ greencloud-bk/
+    cd greencloud
+
+    # get the most recent version number from the tags
+    version=`git tag -l|grep '^release-'|sort|tail -n1|awk -F- '{print $2}'`
+    echo "Next release version: $version"
+
+    # remove all Git and Build artifacts
+    # This will save space, and also will force a clean build for compatibility with other systems.
+    rm -rf .git*
+    rm -rf build/*
+    rm -rf traces/*
+    rm -rf untracked
+    rm show-dashboard.html
+
+    # now, create the archive. The name of the directory should be 'greencloud' for consistency.
+    cd ~
+    tar -czf greencloud-v$version.tar.gz greencloud
+    
+    # revert back to the original version of the 'greencloud' directory
+    rm greencloud/ -rf
+    mv greencloud-bk greencloud
+
+## To update the VirtualBox VM ##
+# The VM should use the .tar.gz archive created above. 
+# Start the VM, download the archive to the home directory, and run these commands:
+    cd ~
+    rm -rf greencloud
+    tar -zxvf greencloud-*gz
+    cd greencloud
+    ./install.sh
+
+
+###################
+## Miscellaneous ##
+###################
+## To perform a Hotfix (i.e., a bugfix on 'master') ##
+# This is a sample workflow of a hotfix:
+Develop
+| Hotfix
+| | Master
+| | |  
+| |/|  
+| * |  1: Merge 'master' into 'hotfix' to get it up to date
+| | |  
+| * |  2: Commit the fix on 'hotfix'
+| | |  <-- pre-release testing
+| * |  3: Maybe additional commits are needed before all tests pass...
+| | |  <-- pre-release testing
+| * |  4: Maybe additional commits are needed before all tests pass...
+| | |  <-- pre-release testing
+| |\|  
+| | *  5: When all tests pass, then merge to 'master'
+| | *  6: Tag this release with a version number
+|/| | 
+* | |  7: Merge the hotfix back into 'develop' as well.
+| | |  
+
+# Switch local workspace to 'hotfix':
+# if you have not created a 'hotfix' branch on your local machine yet:
+    git checkout -b hotfix origin/hotfix
+
+# if you already have a 'hotfix' branch on your machine:
+    git checkout hotfix
+
+# Get up to date
+    git pull
+
+# Fix and test locally...
+
+# push to 'hotfix' on GForge
+    git push
+
+# TODO: If/when we get an automated QA environment set up, then this is where you would have the QA system run a full automated test from the 'hotfix' branch on GForge.
+
+# If all tests pass, then merge 'hotfix' into 'master':
+    git checkout master
+    git merge hotfix
+# tag 'master' with the release version (replace 1.2.3 with the correct version number):
+    git tag -a 1.2.3

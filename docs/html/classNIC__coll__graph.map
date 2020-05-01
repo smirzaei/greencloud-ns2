@@ -1,0 +1,13 @@
+<map id="NIC" name="NIC">
+<area shape="rect" id="node2" href="$classDcResource.html" title="DcResource" alt="" coords="225,288,319,315"/>
+<area shape="rect" id="node5" href="$classResourceSpec.html" title="ResourceSpec" alt="" coords="88,199,195,225"/>
+<area shape="rect" id="node6" href="$classPowerModel.html" title="PowerModel" alt="" coords="5,109,99,136"/>
+<area shape="rect" id="node4" href="$classResource.html" title="Resource" alt="" coords="177,109,255,136"/>
+<area shape="rect" id="node7" href="$classResourceProvider.html" title="ResourceProvider" alt="" coords="360,288,483,315"/>
+<area shape="rect" id="node15" href="$classTskComSink.html" title="TskComSink" alt="" coords="524,377,620,404"/>
+<area shape="rect" id="node9" href="$classTskComAgent.html" title="TskComAgent" alt="" coords="329,199,433,225"/>
+<area shape="rect" id="node11" href="$classProviderOutAgent.html" title="ProviderOutAgent" alt="" coords="457,199,580,225"/>
+<area shape="rect" id="node13" href="$classPoaBufList.html" title="PoaBufList" alt="" coords="476,109,561,136"/>
+<area shape="rect" id="node14" href="$classPoaBuf.html" title="PoaBuf" alt="" coords="487,5,551,32"/>
+<area shape="rect" id="node16" href="$classByteCounter.html" title="ByteCounter" alt="" coords="575,288,670,315"/>
+</map>

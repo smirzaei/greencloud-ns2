@@ -1,0 +1,12 @@
+<map id="VmMigration" name="VmMigration">
+<area shape="rect" id="node4" href="$classVmMigrationSink.html" title="VmMigrationSink" alt="" coords="73,543,194,569"/>
+<area shape="rect" id="node2" href="$classResourceConsumer.html" title="ResourceConsumer" alt="" coords="149,288,285,315"/>
+<area shape="rect" id="node16" href="$classVM.html" title="VM" alt="" coords="279,364,321,391"/>
+<area shape="rect" id="node6" href="$classByteCounter.html" title="ByteCounter" alt="" coords="81,109,175,136"/>
+<area shape="rect" id="node15" href="$classTskComSink.html" title="TskComSink" alt="" coords="169,199,265,225"/>
+<area shape="rect" id="node7" href="$classResourceProvider.html" title="ResourceProvider" alt="" coords="411,288,533,315"/>
+<area shape="rect" id="node9" href="$classTskComAgent.html" title="TskComAgent" alt="" coords="308,199,412,225"/>
+<area shape="rect" id="node11" href="$classProviderOutAgent.html" title="ProviderOutAgent" alt="" coords="445,199,568,225"/>
+<area shape="rect" id="node13" href="$classPoaBufList.html" title="PoaBufList" alt="" coords="532,109,617,136"/>
+<area shape="rect" id="node14" href="$classPoaBuf.html" title="PoaBuf" alt="" coords="543,5,607,32"/>
+</map>
